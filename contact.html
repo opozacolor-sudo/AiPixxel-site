@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucrează cu noi — AiPixxel Studio</title>
+<meta name="description" content="Contactează AiPixxel Studio pentru aplicații mobile, site-uri web, conținut AI și automatizări. Primul apel e gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EFE8;
+    --ink: #1a1a1a;
+    --muted: #9b9690;
+    --line: #D5D1C9;
+    --orange: #FF4D00;
+    --green: #00FF87;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex; flex-direction: column;
+  }
+
+  /* HEADER */
+  header {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 4vw;
+    background: var(--bg);
+    border-bottom: 2px solid var(--orange);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .head-left { display: flex; gap: 10px; align-items: center; }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; flex-shrink: 0; box-shadow: 0 0 8px var(--green); }
+  @keyframes blink { 50% { opacity: 0.3; } }
+  .logo-center {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 15px; letter-spacing: 0.1em; text-align: center; line-height: 1.1;
+    color: var(--orange); text-decoration: none;
+  }
+  .logo-center span { display: block; font-size: 7px; letter-spacing: 0.4em; font-weight: 700; opacity: 0.7; margin-top: 3px; color: var(--ink); }
+  .head-right { display: flex; gap: 24px; align-items: center; }
+  .head-right a { color: var(--ink); text-decoration: none; opacity: 0.6; transition: color 0.2s, opacity 0.2s; font-size: 11px; letter-spacing: 0.1em; }
+  .head-right a:hover { color: var(--orange); opacity: 1; }
+
+  /* MAIN */
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 60px 4vw;
+  }
+
+  /* LEFT — tagline */
+  .contact-left {
+    padding-right: 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--line);
+  }
+  .contact-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 20px;
+  }
+  .contact-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1; text-transform: uppercase; letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .contact-title span { color: var(--orange); }
+  .contact-desc {
+    color: var(--muted); font-size: 15px; line-height: 1.6;
+    max-width: 38ch; margin-bottom: 40px;
+  }
+  .contact-direct { display: flex; flex-direction: column; gap: 12px; }
+  .contact-direct a {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .contact-direct a:hover { color: var(--orange); }
+  .contact-direct .icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-direct a:hover .icon { border-color: var(--orange); background: var(--orange); }
+
+  /* RIGHT — formular */
+  .contact-right { padding-left: 60px; }
+  .form-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px; color: var(--ink);
+    transition: border-color 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--orange); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select { cursor: pointer; background: var(--bg); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .btn-submit {
+    width: 100%; padding: 16px;
+    background: var(--orange); color: #F2EFE8;
+    border: none; border-radius: 4px;
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: #e63d00; transform: translateY(-2px); }
+
+  .success-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: var(--green); color: #0E0E0E;
+    border-radius: 4px; font-size: 13px; font-weight: 600;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 14px 4vw;
+    display: flex; justify-content: space-between;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+    border-top: 1px solid var(--orange);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--orange); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column; align-items: center;
+      padding: 12px 4vw 0; border-bottom: none; gap: 0;
+    }
+    .head-left { width: 100%; justify-content: center; font-size: 9px; order: 3; padding: 8px 0; border-top: 1px solid var(--orange); margin-top: 8px; }
+    .logo-center { font-size: 22px; letter-spacing: 0.15em; order: 1; }
+    .logo-center span { font-size: 9px; letter-spacing: 0.5em; }
+    .head-right { order: 2; gap: 28px; justify-content: center; padding: 8px 0 0; width: 100%; }
+    .head-right a { opacity: 1; font-size: 10px; }
+    .head-right a:not(:last-child) { display: flex; }
+
+    main { grid-template-columns: 1fr; padding: 32px 5vw; gap: 40px; }
+    .contact-left { padding-right: 0; border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 32px; }
+    .contact-right { padding-left: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-left">
+    <span class="live-dot"></span>
+    <span id="clock">BUCUREȘTI, RO // —</span>
+  </div>
+  <a href="/" class="logo-center">AIPIXXEL<span>STUDIO</span></a>
+  <div class="head-right">
+    <a href="/despre">De ce noi</a>
+    <a href="/contact">Lucrează cu noi</a>
+  </div>
+</header>
+
+<main>
+  <div class="contact-left">
+    <div class="contact-tag">// Contact</div>
+    <h1 class="contact-title">Primul apel<br>e <span>gratis.</span></h1>
+    <p class="contact-desc">Descrie-ne proiectul și îți răspundem în mai puțin de 24 de ore cu o estimare clară de timp și cost. Fără BS.</p>
+    <div class="contact-direct">
+      <a href="mailto:contact@aipixxel.online">
+        <div class="icon">✉</div>
+        contact@aipixxel.online
+      </a>
+      <a href="https://wa.me/40700000000" target="_blank">
+        <div class="icon">💬</div>
+        WhatsApp
+      </a>
+      <a href="https://instagram.com/aipixxel" target="_blank">
+        <div class="icon">◎</div>
+        @aipixxel
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <div class="form-title">Spune-ne despre proiectul tău</div>
+    <form id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nume *</label>
+          <input type="text" name="nume" placeholder="Ion Popescu" required>
+        </div>
+        <div class="form-group">
+          <label>Funcție</label>
+          <input type="text" name="functie" placeholder="CEO, Manager...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nume firmă</label>
+          <input type="text" name="firma" placeholder="Compania SRL">
+        </div>
+        <div class="form-group">
+          <label>Contact (email/telefon) *</label>
+          <input type="text" name="contact" placeholder="email sau telefon" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ce fel de ajutor dorești? *</label>
+        <select name="serviciu" required>
+          <option value="" disabled selected>Alege un serviciu</option>
+          <option>Video AI</option>
+          <option>Imagini AI</option>
+          <option>Site-uri & Platforme</option>
+          <option>Aplicații Mobile</option>
+          <option>Automatizări</option>
+          <option>Dashboard-uri</option>
+          <option>Agenți AI</option>
+          <option>Strategie Marketing</option>
+          <option>Mai multe servicii</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Descrie proiectul</label>
+        <textarea name="descriere" placeholder="Spune-ne mai multe despre ce ai în minte — cu cât mai multe detalii, cu atât mai bine..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Trimite mesajul →</button>
+      <div class="success-msg" id="successMsg">✓ Mesaj trimis! Îți răspundem în 24 de ore.</div>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <span>©2026 AiPixxel Studio</span>
+  <span>contact@aipixxel.online</span>
+  <a href="https://instagram.com/aipixxel">Instagram</a>
+</footer>
+
+<script>
+  // Clock
+  function updateClock() {
+    var now = new Date();
+    var time = now.toLocaleTimeString('ro-RO', { hour:'2-digit', minute:'2-digit' });
+    document.getElementById('clock').textContent = 'BUCUREȘTI, RO // ' + time;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  // Form submit — placeholder pentru EmailJS
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // TODO: conectează EmailJS aici
+    // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', this, 'PUBLIC_KEY')
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+    setTimeout(function() {
+      document.getElementById('successMsg').style.display = 'none';
+    }, 5000);
+  });
+</script>
+</body>
+</html>
