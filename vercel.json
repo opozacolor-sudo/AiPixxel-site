@@ -1,6 +1,14 @@
 {
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/despre", "destination": "/despre.html" }
+    { "source": "/despre", "destination": "/despre.html" },
+    { "source": "/video-ai", "destination": "/video-ai.html" },
+    { "source": "/imagini-ai", "destination": "/imagini-ai.html" },
+    { "source": "/site-uri", "destination": "/site-uri.html" },
+    { "source": "/aplicatii-mobile", "destination": "/aplicatii-mobile.html" },
+    { "source": "/automatizari", "destination": "/automatizari.html" },
+    { "source": "/dashboard-uri", "destination": "/dashboard-uri.html" },
+    { "source": "/agenti-ai", "destination": "/agenti-ai.html" },
+    { "source": "/strategie-marketing", "destination": "/strategie-marketing.html" }
   ]
 }
