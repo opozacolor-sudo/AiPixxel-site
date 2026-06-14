@@ -181,6 +181,7 @@
     footer { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -281,16 +282,38 @@
   updateClock();
   setInterval(updateClock, 30000);
 
-  // Form submit — placeholder pentru EmailJS
+  // EmailJS
+  emailjs.init('m21VT0DNttjp_iv0X');
+
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    // TODO: conectează EmailJS aici
-    // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', this, 'PUBLIC_KEY')
-    document.getElementById('successMsg').style.display = 'block';
-    this.reset();
-    setTimeout(function() {
-      document.getElementById('successMsg').style.display = 'none';
-    }, 5000);
+    var btn = this.querySelector('.btn-submit');
+    btn.textContent = 'Se trimite...';
+    btn.disabled = true;
+
+    var params = {
+      nume: this.querySelector('[name="nume"]').value,
+      functie: this.querySelector('[name="functie"]').value,
+      firma: this.querySelector('[name="firma"]').value,
+      contact: this.querySelector('[name="contact"]').value,
+      serviciu: this.querySelector('[name="serviciu"]').value,
+      descriere: this.querySelector('[name="descriere"]').value,
+    };
+
+    emailjs.send('service_rihrr78', 'template_8lex3sg', params)
+      .then(function() {
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('contactForm').reset();
+        btn.textContent = 'Trimite mesajul →';
+        btn.disabled = false;
+        setTimeout(function() {
+          document.getElementById('successMsg').style.display = 'none';
+        }, 5000);
+      }, function(error) {
+        alert('Eroare la trimitere. Încearcă din nou sau scrie direct la contact@aipixxel.online');
+        btn.textContent = 'Trimite mesajul →';
+        btn.disabled = false;
+      });
   });
 </script>
 </body>
