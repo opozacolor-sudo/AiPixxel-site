@@ -185,14 +185,83 @@
 
   <div class="bottom">
     <div class="portfolio-header">
-      <span class="portfolio-title">// Portofoliu</span>
-      <span class="portfolio-count">Coming soon</span>
+      <span class="portfolio-title">// Tipuri de agenți</span>
+      <span class="portfolio-count">9 agenți</span>
     </div>
-    <div class="portfolio-grid" id="portfolioGrid">
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+    <div class="portfolio-grid" id="portfolioGrid" style="grid-template-columns: repeat(3,1fr); gap:8px;">
+
+      <style>
+        .agent-card { background:#0D1117; flex-direction:row !important; align-items:center; justify-content:flex-start !important; padding:16px; gap:14px; }
+        .agent-robot svg { flex-shrink:0; }
+        .agent-info { display:flex; flex-direction:column; gap:4px; }
+        .agent-num { font-size:9px; letter-spacing:0.2em; color:rgba(255,255,255,0.2); font-family:'Space Grotesk',sans-serif; font-weight:700; text-transform:uppercase; }
+        .agent-name { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(0.9rem,1.8vw,1.4rem); text-transform:uppercase; letter-spacing:-0.01em; line-height:0.95; color:#FF4D00; }
+        .agent-desc { font-size:9px; letter-spacing:0.12em; color:rgba(0,255,135,0.7); font-family:'Space Grotesk',sans-serif; font-weight:700; text-transform:uppercase; margin-top:2px; }
+      </style>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">01</span><span class="agent-name">Customer<br>Support</span><span class="agent-desc">Răspunde clienților</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">02</span><span class="agent-name">Sales<br>Agent</span><span class="agent-desc">Califică lead-uri</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">03</span><span class="agent-name">Booking<br>Agent</span><span class="agent-desc">Programări automate</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">04</span><span class="agent-name">HR<br>Agent</span><span class="agent-desc">Recrutare & onboard</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">05</span><span class="agent-name">Content<br>Agent</span><span class="agent-desc">Postări & copy</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">06</span><span class="agent-name">Finance<br>Agent</span><span class="agent-desc">Facturi & rapoarte</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">07</span><span class="agent-name">Research<br>Agent</span><span class="agent-desc">Analiză & date</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">08</span><span class="agent-name">E-comm<br>Agent</span><span class="agent-desc">Comenzi & retur</span></div>
+      </div>
+
+      <div class="portfolio-item agent-card">
+        <div class="agent-robot">
+          <svg width="36" height="46" viewBox="0 0 80 100" fill="none"><line x1="40" y1="0" x2="40" y2="14" stroke="#FF4D00" stroke-width="3"/><circle cx="40" cy="5" r="5" fill="#00FF87"/><rect x="14" y="14" width="52" height="36" rx="8" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="22" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="44" y="24" width="14" height="10" rx="3" fill="#00FF87"/><rect x="26" y="40" width="28" height="4" rx="2" fill="#FF4D00" opacity="0.8"/><rect x="10" y="54" width="60" height="34" rx="6" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><circle cx="28" cy="68" r="5" fill="#FF4D00"/><circle cx="40" cy="68" r="5" fill="#00FF87"/><circle cx="52" cy="68" r="5" fill="#FF4D00"/><rect x="0" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="72" y="56" width="8" height="24" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="18" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/><rect x="46" y="88" width="16" height="12" rx="4" fill="#1a1a1a" stroke="#FF4D00" stroke-width="2"/></svg>
+        </div>
+        <div class="agent-info"><span class="agent-num">09</span><span class="agent-name">Legal<br>Agent</span><span class="agent-desc">Contracte & GDPR</span></div>
+      </div>
+
     </div>
   </div>
 </main>
