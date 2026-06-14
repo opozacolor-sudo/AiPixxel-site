@@ -3,355 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STUDIO — build & content</title>
+<title>AiPixxel Studio — Cel mai bun studio digital din România</title>
+<meta name="description" content="Aplicații mobile, site-uri web, conținut video AI și automatizări pentru afaceri din România. Nu suntem pentru toți. Și nici nu vrem să fim.">
+<meta name="keywords" content="studio digital București, dezvoltare aplicații mobile România, agenție digitală premium, producție video AI România, automatizări inteligență artificială, site-uri web profesionale București, agenți AI pentru afaceri, content social media TikTok Instagram România">
+<meta property="og:title" content="AiPixxel Studio — Cel mai bun studio digital din România">
+<meta property="og:description" content="Aplicații mobile, site-uri, conținut AI și automatizări. Suntem noi, dar cei mai buni.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aipixxel.online">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aipixxel.online">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F4F1EA;
-    --ink: #111111;
+    --bg: #F2EFE8;
+    --ink: #1a1a1a;
     --muted: #9b9690;
-    --line: #d8d4cc;
+    --line: #E0DCD4;
+    --orange: #FF4D00;
+    --green: #00FF87;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
+  html, body { height: 100%; overflow: hidden; }
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
+    cursor: default;
   }
-  .display { font-family: 'Archivo Black', sans-serif; }
+
+  /* CUSTOM CURSOR */
+  #cursor {
+    position: fixed;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: #F2EFE8;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5;
+    font-family: 'Space Grotesk', sans-serif;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+    z-index: 9999;
+    top: 0; left: 0;
+  }
+  #cursor.visible { opacity: 1; }
+  .hero-stack { cursor: none; }
 
   /* HEADER */
   header {
     flex-shrink: 0;
-    z-index: 50;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 4vw;
-    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
-    background: var(--ink);
-    color: #fff;
+    padding: 14px 4vw;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    border-bottom: 2px solid var(--orange);
   }
   .head-left { display: flex; gap: 10px; align-items: center; }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #3FB950; animation: blink 2s infinite; }
-  @keyframes blink { 50% { opacity: 0.2; } }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; flex-shrink: 0; box-shadow: 0 0 8px var(--green); }
+  @keyframes blink { 50% { opacity: 0.3; } }
   .logo-center {
-    font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 0.04em;
-    text-align: center; line-height: 1;
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 15px; letter-spacing: 0.1em; text-align: center; line-height: 1.1;
+    color: var(--orange);
   }
-  .head-right { display: flex; gap: 28px; align-items: center; }
-  .head-right span { opacity: 0.85; }
-  @media (max-width: 768px) {
-    .head-right > *:not(:last-child) { display: none; }
-    header { padding: 16px 5vw; }
-  }
+  .logo-center span { display: block; font-size: 7px; letter-spacing: 0.4em; font-weight: 700; opacity: 0.7; margin-top: 3px; color: var(--ink); }
+  .head-right { display: flex; gap: 24px; align-items: center; }
+  .head-right a { color: var(--ink); text-decoration: none; opacity: 0.6; transition: color 0.2s, opacity 0.2s; font-size: 11px; letter-spacing: 0.1em; }
+  .head-right a:hover { color: var(--orange); opacity: 1; }
+  @media (max-width: 768px) { .head-right a:not(:last-child) { display: none; } }
 
   /* HERO */
   .hero {
-    flex: 1;
-    min-height: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex: 1; min-height: 0;
+    display: flex; align-items: center; justify-content: center;
     position: relative;
-    padding: 0 4vw;
   }
-  .hero-tagline {
-    position: absolute; top: 6%;
-    font-size: clamp(1.1rem, 2.4vw, 1.9rem);
-    font-weight: 800; line-height: 1.15; letter-spacing: -0.01em;
-    text-transform: uppercase;
-  }
-  .tagline-left { left: 4vw; text-align: left; }
-  .tagline-right { right: 4vw; text-align: right; }
-  .tagline-sub { color: var(--muted); }
 
+  .hero-tagline {
+    position: absolute;
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(0.85rem, 1.6vw, 1.35rem);
+    line-height: 1.15; text-transform: uppercase; letter-spacing: -0.01em;
+    bottom: 18%; 
+    max-width: 20ch;
+  }
+  .tagline-left  { left: 3vw; max-width: 18ch; }
+  .tagline-right {
+    right: 2vw;
+    text-align: right;
+    max-width: 22ch;
+    bottom: 20%;
+    font-size: clamp(0.75rem, 1.3vw, 1.1rem);
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+  }
+  .tagline-sub {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+    font-size: clamp(0.6rem, 1vw, 0.82rem);
+    color: #0E0E0E;
+    text-transform: none;
+    letter-spacing: 0; margin-top: 10px;
+    display: inline-block;
+    background: var(--green);
+    padding: 4px 10px;
+    border-radius: 4px;
+    line-height: 1.5;
+  }
   @media (max-width: 768px) {
     .tagline-right { display: none; }
-    .tagline-left { font-size: 0.95rem; top: 4%; }
-    .hero-stack { width: min(280px, 60vw); height: 46vh; }
+    .tagline-left { left: 4vw; font-size: 0.8rem; bottom: 10%; }
   }
 
+  /* HERO STACK — mai mare */
   .hero-stack {
     position: relative;
-    width: min(380px, 32vw);
-    height: min(480px, 52vh);
+    width: min(380px, 30vw);
+    height: min(500px, 65vh);
+    border-radius: 2px;
   }
+  @media (max-width: 768px) {
+    .hero-stack { width: min(200px, 50vw); height: 50vh; }
+  }
+
+  /* wrapper pentru overflow clip pe center */
+  .center-wrap {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
   .stack-img {
     position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
-    background: #000;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    object-fit: cover; border-radius: 2px;
+    box-shadow: 0 32px 64px -20px rgba(0,0,0,0.32);
+    background: #1a1a1a;
   }
-  .stack-img.side-left { transform: rotate(-7deg) translateX(-78%); }
-  .stack-img.side-right { transform: rotate(6deg) translateX(78%); }
-  .stack-img.center { transform: rotate(0deg); z-index: 2; cursor: pointer; }
-  .stack-img.side-left, .stack-img.side-right { z-index: 1; opacity: 0.92; }
-
-  .open-badge {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-    width: 90px; height: 90px; border-radius: 50%;
-    background: rgba(244,241,234,0.92);
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.3;
-    z-index: 3; pointer-events: none;
-    opacity: 0; transition: opacity 0.3s ease;
+  /* side images — fade + scale transition */
+  .stack-img.side-left {
+    transform: rotate(-7deg) translateX(-72%) scale(0.75);
+    z-index: 1; opacity: 0.85;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow: visible;
   }
-  .stack-img.center:hover ~ .open-badge,
-  .hero-stack:hover .open-badge { opacity: 1; }
+  .stack-img.side-right {
+    transform: rotate(6deg) translateX(72%) scale(0.75);
+    z-index: 1; opacity: 0.85;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow: visible;
+  }
+  /* center image — slide de sus in jos */
+  .stack-img.center {
+    z-index: 2;
+    transform: translateY(0%);
+    transition: none;
+  }
+  .stack-img.center.slide-in {
+    animation: slideDown 0.55s cubic-bezier(0.77,0,0.18,1) forwards;
+  }
+  @keyframes slideDown {
+    from { transform: translateY(-102%); }
+    to   { transform: translateY(0%); }
+  }
 
-  /* SCROLL RULER */
+  /* side images hidden state pentru animație */
+  .stack-img.side-left.hidden-side  { opacity: 0; transform: rotate(-7deg) translateX(-72%) scale(0.65); }
+  .stack-img.side-right.hidden-side { opacity: 0; transform: rotate(6deg)  translateX(72%)  scale(0.65); }
+
+  /* RULER */
   .ruler-wrap {
     flex-shrink: 0;
+    margin: 0;
+    padding: 0 0 0 0;
     position: relative;
-    border-top: 1px solid var(--line);
-    padding-top: 12px;
-    margin: 0 4vw;
   }
+
+  /* gradient fade laterale */
+  .ruler-fade {
+    position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
+  }
+  .ruler-fade.left  { left: 0;  background: linear-gradient(to right, var(--bg) 40%, transparent); }
+  .ruler-fade.right { right: 0; background: linear-gradient(to left,  var(--bg) 40%, transparent); }
+
   .ruler-ticks {
-    height: 16px;
+    height: 12px;
     background-image: repeating-linear-gradient(
-      to right, var(--line) 0, var(--line) 1px, transparent 1px, transparent 14px
+      to right, var(--orange) 0, var(--orange) 1px, transparent 1px, transparent 13px
     );
-    margin-bottom: 12px;
     position: relative;
+    border-top: 1px solid var(--orange);
   }
   .ruler-ticks::after {
-    content: ''; display: block; width: 1px; height: 26px; background: var(--ink);
-    position: absolute; top: -8px; left: 50%;
+    content: ''; display: block;
+    width: 1px; height: 18px; background: var(--orange);
+    position: absolute; top: -4px; left: 50%;
   }
+  .service-item {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(1.1rem, 2.8vw, 2.2rem);
+    text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; transition: color 0.3s;
+    cursor: pointer; flex-shrink: 0; letter-spacing: -0.01em;
+    text-align: center; line-height: 1.1;
+  }
+  .service-item.active { color: var(--orange); }
+
   .services-viewport {
-    position: relative;
-    overflow: hidden;
-    height: clamp(2.2rem, 5.5vw, 3.6rem);
+    position: relative; overflow: hidden;
+    height: clamp(3.2rem, 7vw, 5.2rem);
   }
   .services-track {
-    display: flex; gap: 64px;
+    display: flex; gap: 52px; align-items: center;
     position: absolute; left: 50%; top: 0;
     transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
     will-change: transform;
+    height: 100%;
   }
-  .service-item {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(1.5rem, 4vw, 2.8rem);
-    text-transform: uppercase;
-    color: var(--line);
-    white-space: nowrap;
-    transition: color 0.3s ease;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .service-item.active { color: var(--ink); }
 
-  .nav-arrows {
-    position: absolute; right: 0; bottom: 14px;
-    display: flex; gap: 10px;
+  .ruler-ticks-bottom {
+    height: 12px;
+    background-image: repeating-linear-gradient(
+      to right, var(--orange) 0, var(--orange) 1px, transparent 1px, transparent 13px
+    );
+    border-top: 1px solid var(--orange);
+    margin-top: 8px;
   }
-  .nav-arrow {
-    width: 34px; height: 34px; border-radius: 50%;
-    border: 1px solid var(--line); background: transparent;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 16px; color: var(--ink);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .nav-arrow:hover { border-color: var(--ink); background: var(--ink); color: #fff; }
 
-  .ruler-meta {
+  /* FOOTER */
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 7px 4vw;
+    border-top: 1px solid var(--orange);
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    flex-wrap: wrap; gap: 4px;
+  }
+  .footer-top a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-top a:hover { color: var(--orange); }
+  .footer-top .counter-block { display: flex; align-items: center; gap: 14px; }
+  .footer-top .counter-block span { opacity: 0.5; }
+
+  .footer-bottom {
     display: flex; justify-content: space-between;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
-    margin-top: 12px;
-    padding-bottom: 12px;
+    padding: 5px 4vw 8px;
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    flex-wrap: wrap; gap: 4px;
   }
+  .footer-bottom a { color: var(--muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--green); }
 
-  /* footer */
-  footer {
-    flex-shrink: 0;
-    padding: 10px 4vw;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
-    border-top: 1px solid var(--line);
+  /* SPLASH SCREEN */
+  #splash {
+    position: fixed; inset: 0; z-index: 10000;
+    background: #000;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease;
   }
-  footer a { color: var(--ink); text-decoration: none; }
+  #splash.hide { opacity: 0; pointer-events: none; }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
+  #splash-img {
+    position: absolute;
+    width: min(380px, 30vw);
+    height: min(500px, 65vh);
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 32px 64px -20px rgba(0,0,0,0.8);
+    z-index: 2;
   }
+  @media (max-width: 768px) {
+    #splash-img { width: min(200px, 50vw); height: 50vh; }
+  }
+  .splash-word {
+    position: absolute;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    white-space: nowrap;
+  }
+  .splash-word.visible { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
+
+<div id="splash">
+  <video id="splash-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_112715_1c3a304e-8a03-4325-b622-744ab9b1354c.mp4" autoplay loop muted playsinline></video>
+</div>
+
+<div id="cursor">NU DA<br>CLICK</div>
 
 <header>
   <div class="head-left">
     <span class="live-dot"></span>
     <span id="clock">BUCUREȘTI, RO // —</span>
   </div>
-  <div class="logo-center display">STUDIO<br><span style="font-size:9px; letter-spacing:0.3em;">DANIEL</span></div>
+  <div class="logo-center">AIPIXXEL<span>STUDIO</span></div>
   <div class="head-right">
-    <span>INDEX</span>
-    <span>ABOUT</span>
-    <span>CONTACT</span>
+    <a href="/despre">De ce noi</a>
+    <a href="/contact">Lucrează cu noi</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-tagline tagline-left">
-    Construim produse<br>
-    <span class="tagline-sub">care funcționează.</span>
+    Suntem noi,<br>dar cei mai buni.<span class="tagline-sub">Aplicații mobile, site-uri și conținut AI<br>pentru afaceri care vor să domine.</span>
   </div>
   <div class="hero-tagline tagline-right">
-    Design curat.<br>
-    <span class="tagline-sub">Execuție rapidă.</span>
+    Nu avem<br>concurență.<br>Avem inspirație.<span class="tagline-sub">Studio digital din București.<br>Primul apel e gratis.</span>
   </div>
 
-  <div class="hero-stack">
-    <img class="stack-img side-left" id="imgLeft" alt="">
-    <img class="stack-img center" id="imgCenter" alt="">
-    <img class="stack-img side-right" id="imgRight" alt="">
-    <div class="open-badge">VEZI<br>PROIECTUL</div>
+  <div class="hero-stack" id="heroStack">
+    <img class="stack-img side-left"  id="imgLeft"   alt="Proiecte AiPixxel">
+    <div class="center-wrap" id="centerWrap">
+      <img class="stack-img center" id="imgCenter" alt="AiPixxel Studio">
+    </div>
+    <img class="stack-img side-right" id="imgRight"  alt="Portofoliu AiPixxel">
   </div>
 </section>
 
 <div class="ruler-wrap">
+  <div class="ruler-fade left"></div>
+  <div class="ruler-fade right"></div>
   <div class="ruler-ticks"></div>
   <div class="services-viewport">
     <div class="services-track" id="track"></div>
   </div>
-  <div class="nav-arrows">
-    <button class="nav-arrow" id="prevBtn" aria-label="Serviciul anterior">‹</button>
-    <button class="nav-arrow" id="nextBtn" aria-label="Serviciul următor">›</button>
-  </div>
-  <div class="ruler-meta">
-    <span>©2026 Daniel Studio</span>
-    <span id="counter">01 // 06</span>
-    <span>Powered by Claude + Higgsfield</span>
-  </div>
+  <div class="ruler-ticks-bottom"></div>
 </div>
 
-<footer>
-  <span>București, RO</span>
-  <span>contact@daniel.studio</span>
-  <span>Instagram</span>
-</footer>
+<div class="footer-top">
+  <span>©2026 AiPixxel Studio</span>
+  <div class="counter-block">
+    <span>◄◄</span>
+    <span id="counter">01 // 06</span>
+    <span>►►</span>
+  </div>
+  <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
+</div>
+
+<div class="footer-bottom">
+  <span>București, România</span>
+  <span>Aplicații · Site-uri · Conținut AI · Automatizări · Agenți AI</span>
+  <a href="https://instagram.com/aipixxel">Instagram</a>
+</div>
 
 <script>
-  // images - swap these URLs for your real generated assets
-  const sets = [
-    {
-      left: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop",
-      center: "PLACEHOLDER_BMW",
-      right: "https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=600&auto=format&fit=crop"
-    },
-    {
-      left: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=600&auto=format&fit=crop",
-      center: "PLACEHOLDER_CODE",
-      right: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop"
-    },
-    {
-      left: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600&auto=format&fit=crop",
-      center: "PLACEHOLDER_ASTRO",
-      right: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop"
-    }
+(function() {
+  // ── SPLASH ──
+  var splashWords = [
+    { text: 'Automotive', color: '#FF4D00' },
+    { text: 'Ceasuri de Lux', color: '#00FF87' },
+    { text: 'Medical', color: '#FF4D00' },
+    { text: 'Electronice', color: '#00FF87' },
+    { text: 'Bijuterii', color: '#FF4D00' },
+    { text: 'Real Estate', color: '#00FF87' },
+    { text: 'Banking', color: '#FF4D00' },
+    { text: 'Retail', color: '#00FF87' },
+    { text: 'HoReCa', color: '#FF4D00' },
+    { text: 'Fashion', color: '#00FF87' },
+    { text: 'Cel mai bun studio digital', color: '#FF4D00' },
+    { text: 'Nu avem concurență', color: '#00FF87' },
+    { text: 'Aplicații care domină', color: '#FF4D00' },
+    { text: 'Conținut care vinde', color: '#00FF87' },
+    { text: 'Primul apel e gratis', color: '#FF4D00' },
+    { text: 'AI care lucrează pentru tine', color: '#00FF87' },
+    { text: 'Design curat. Execuție rapidă.', color: '#FF4D00' },
+    { text: 'Suntem noi, dar cei mai buni', color: '#00FF87' },
+    { text: 'Studio digital București', color: '#FF4D00' },
+    { text: 'Rezultate, nu promisiuni', color: '#00FF87' }
   ];
 
-  const services = [
-    { label: "Apps Mobile", set: 0 },
-    { label: "Site-uri & Platforme", set: 1 },
-    { label: "AI Agents", set: 2 },
-    { label: "Content Video AI", set: 0 },
-    { label: "Automatizări", set: 1 },
-    { label: "Dashboard-uri", set: 2 },
+  var splash = document.getElementById('splash');
+
+  // Safe zones — avoid center image area
+  function randomPos() {
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var imgW = Math.min(380, vw * 0.30);
+    var imgH = Math.min(500, vh * 0.65);
+    var cx = vw / 2;
+    var cy = vh / 2;
+    var margin = 40;
+    var x, y, tries = 0;
+    do {
+      x = margin + Math.random() * (vw - margin * 2);
+      y = margin + Math.random() * (vh - margin * 2);
+      tries++;
+    } while (
+      tries < 30 &&
+      x > cx - imgW / 2 - 80 && x < cx + imgW / 2 + 80 &&
+      y > cy - imgH / 2 - 40 && y < cy + imgH / 2 + 40
+    );
+    return { x: x, y: y };
+  }
+
+  var activeEls = [];
+  var wordIdx = 0;
+  var shuffled = splashWords.slice().sort(function() { return Math.random() - 0.5; });
+
+  function spawnWord() {
+    var w = shuffled[wordIdx % shuffled.length];
+    wordIdx++;
+    var pos = randomPos();
+    var el = document.createElement('div');
+    el.className = 'splash-word';
+    el.textContent = w.text;
+    el.style.color = w.color;
+    el.style.fontSize = (Math.random() * 0.5 + 0.55) + 'rem';
+    el.style.left = pos.x + 'px';
+    el.style.top  = pos.y + 'px';
+    el.style.transform = 'translate(-50%, -50%)';
+    splash.appendChild(el);
+    requestAnimationFrame(function() { el.classList.add('visible'); });
+    setTimeout(function() {
+      el.classList.remove('visible');
+      setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 280);
+    }, 400 + Math.random() * 600);
+    activeEls.push(el);
+  }
+
+  // Spawn words rapidly for 3 seconds
+  var spawnInterval = setInterval(spawnWord, 120);
+
+  setTimeout(function() {
+    clearInterval(spawnInterval);
+    // hide all remaining words
+    activeEls.forEach(function(el) { el.classList.remove('visible'); });
+    // fade out splash
+    setTimeout(function() {
+      splash.classList.add('hide');
+      setTimeout(function() {
+        splash.style.display = 'none';
+      }, 800);
+    }, 200);
+  }, 3000);
+
+  // ── CUSTOM CURSOR ──
+  var cursor = document.getElementById('cursor');
+  var stack  = document.getElementById('heroStack');
+  var mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+  document.addEventListener('mousemove', function(e) { mouseX = e.clientX; mouseY = e.clientY; });
+  stack.addEventListener('mouseenter', function() { cursor.classList.add('visible'); });
+  stack.addEventListener('mouseleave', function() { cursor.classList.remove('visible'); });
+  function animateCursor() {
+    curX += (mouseX - curX) * 0.12;
+    curY += (mouseY - curY) * 0.12;
+    cursor.style.left = curX + 'px';
+    cursor.style.top  = curY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // CAROUSEL
+  var sets = [
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_115601_0669e8c0-2b06-49a7-a40e-d99966f9c487.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_121724_47e62c0a-56ca-4ef9-bf43-0fe1039702f3.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_115656_c2c57879-5224-43e8-9462-b3625b5b128a.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_114647_38ba1317-7a32-47fa-bcfd-1a3e4d400d50.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_114950_a92da579-0db7-4204-8632-3530a848621e.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_114651_d1844fda-5859-4492-bfa7-e15d496119c2.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_105804_4260135f-5bf2-46cb-83d6-c61d278c4609.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_112715_1c3a304e-8a03-4325-b622-744ab9b1354c.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_111518_a275669e-4b87-45e8-910b-6239f2c7bcdf.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_114145_0e2f06a7-b777-4e61-b974-19783bad6892.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_114051_b195a2c6-abec-44b8-b39a-f7eb410e8cfb.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_113621_d9ee832a-af8d-4fd0-9820-227ff99d1da1.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_122100_571712c9-9c69-4591-a325-0b0681e451ff.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_122135_88687371-6f41-43a5-aa9e-747cc6fc5762.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_122106_181a18ea-89c5-4586-a4ce-b547ed38fd3b.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_122448_5a054c20-5d1c-4adc-8e55-9793e84c3bb0.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_122544_1b600e0c-a985-4275-bb04-69c509b393b5.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_122455_04b381ee-c92c-4859-8ee0-069c22129c71.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_123126_a1d14b45-dad2-4e43-8526-759d5618d018.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_123558_9673e34f-69a3-4365-acb1-860062e07a66.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_123132_1b8ce5b4-145a-4321-a70c-915cdda3c825.png&w=1920&q=85', isVideo: true },
+    { left:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_140646_461f0c2e-938e-4b95-bec2-0f7efd215b0f.png&w=1920&q=85', center:'https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_142417_8e3e46e2-2d2a-44b2-9127-9f01ca8f545d.mp4', right:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_2zDyOvLyC8VQwJ1Lat1LTeoLdsh%2Fhf_20260614_135922_9732994d-08d3-4fed-9144-c8778704e128.png&w=1920&q=85', isVideo: true },
   ];
-
-  const N = services.length;
-  // Build track with extra clones on each side for seamless looping
-  const CLONES = 2;
-  const track = document.getElementById('track');
-  const totalItems = N + CLONES * 2;
-  const startIndex = CLONES; // index of first "real" item
-
-  for (let i = 0; i < totalItems; i++) {
-    const svcIdx = ((i - CLONES) % N + N) % N;
-    const div = document.createElement('div');
+  var services = [
+    { label:'Video AI', set:2 },
+    { label:'Imagini AI', set:3 },
+    { label:'Site-uri &<br>Platforme', set:1 },
+    { label:'Aplicații Mobile', set:0 },
+    { label:'Automatizări', set:4 },
+    { label:'Dashboard-uri', set:5 },
+    { label:'Agenți AI', set:6 },
+    { label:'Strategie Marketing', set:7 }
+  ];
+  var N = services.length, CLONES = 3;
+  var track = document.getElementById('track');
+  for (var i = 0; i < N + CLONES * 2; i++) {
+    var svcIdx = ((i - CLONES) % N + N) % N;
+    var div = document.createElement('div');
     div.className = 'service-item';
-    div.textContent = services[svcIdx].label;
+    div.innerHTML = services[svcIdx].label.replace('\n', '<br>');
     div.dataset.real = svcIdx;
-    div.addEventListener('click', () => {
-      const diff = i - current;
-      current += diff;
-      render(true);
-    });
+    (function(idx) {
+      div.addEventListener('click', function() { current = idx; render(true); });
+    })(i);
     track.appendChild(div);
   }
+  var items = Array.from(track.children);
+  var imgLeft = document.getElementById('imgLeft');
+  var imgCenter = document.getElementById('imgCenter');
+  var imgRight = document.getElementById('imgRight');
+  var counter = document.getElementById('counter');
+  var current = CLONES;
 
-  const items = Array.from(track.children);
-  const imgLeft = document.getElementById('imgLeft');
-  const imgCenter = document.getElementById('imgCenter');
-  const imgRight = document.getElementById('imgRight');
-  const counter = document.getElementById('counter');
-
-  let current = startIndex; // position within full track
-
+  var isFirst = true;
   function applyImages(setIdx) {
-    const s = sets[setIdx];
-    imgLeft.src = s.left;
-    imgRight.src = s.right;
-    imgCenter.style.background = "linear-gradient(135deg,#222,#444)";
-    imgCenter.alt = s.center;
+    var s = sets[setIdx];
+    var wrap = document.getElementById('centerWrap');
+
+    // side images
+    imgLeft.classList.add('hidden-side');
+    imgRight.classList.add('hidden-side');
+    setTimeout(function() {
+      imgLeft.src  = s.left;
+      imgRight.src = s.right;
+      imgLeft.classList.remove('hidden-side');
+      imgRight.classList.remove('hidden-side');
+    }, 200);
+
+    // center — slide down, support video or image
+    var newEl;
+    if (s.isVideo) {
+      newEl = document.createElement('video');
+      newEl.src = s.center;
+      newEl.autoplay = true;
+      newEl.loop = true;
+      newEl.muted = true;
+      newEl.playsInline = true;
+      newEl.className = 'stack-img center' + (isFirst ? '' : ' slide-in');
+    } else {
+      newEl = document.createElement('img');
+      newEl.src = s.center;
+      newEl.alt = 'AiPixxel Studio';
+      newEl.className = 'stack-img center' + (isFirst ? '' : ' slide-in');
+    }
+
+    if (isFirst) {
+      wrap.innerHTML = '';
+      wrap.appendChild(newEl);
+      imgCenter = newEl;
+      isFirst = false;
+    } else {
+      wrap.appendChild(newEl);
+      var oldEl = imgCenter;
+      setTimeout(function() {
+        if (oldEl && oldEl.parentNode) oldEl.parentNode.removeChild(oldEl);
+        newEl.classList.remove('slide-in');
+        imgCenter = newEl;
+      }, 580);
+    }
   }
-
   function render(animate) {
-    items.forEach(el => el.classList.remove('active'));
-    const activeEl = items[current];
+    items.forEach(function(el) { el.classList.remove('active'); });
+    var activeEl = items[current];
     activeEl.classList.add('active');
-
-    // center the active item: shift track so active item's center = viewport center (left:50%)
-    const offset = activeEl.offsetLeft + activeEl.offsetWidth / 2;
+    var offset = activeEl.offsetLeft + activeEl.offsetWidth / 2;
     track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.65,0,0.35,1)' : 'none';
-    track.style.transform = `translateX(${-offset}px)`;
-
-    const realIdx = parseInt(activeEl.dataset.real);
+    track.style.transform  = 'translateX(' + (-offset) + 'px)';
+    var realIdx = parseInt(activeEl.dataset.real);
     applyImages(services[realIdx].set);
-    counter.textContent = String(realIdx + 1).padStart(2, '0') + " // " + String(N).padStart(2, '0');
-
-    // seamless loop: if we've drifted into clone zone, snap back without animation
-    if (current < CLONES || current >= totalItems - CLONES) {
-      setTimeout(() => {
+    counter.textContent = String(realIdx + 1).padStart(2,'0') + ' // ' + String(N).padStart(2,'0');    if (current < CLONES || current >= N + CLONES) {
+      setTimeout(function() {
         if (current < CLONES) current += N;
-        else if (current >= totalItems - CLONES) current -= N;
+        else if (current >= N + CLONES) current -= N;
         render(false);
       }, animate ? 520 : 0);
     }
   }
+  window.addEventListener('resize', function() { render(false); });
+  requestAnimationFrame(function() { render(false); });
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    current++;
-    render(true);
-  });
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    current--;
-    render(true);
-  });
-
-  window.addEventListener('resize', () => render(false));
-  // initial render after layout settles
-  requestAnimationFrame(() => render(false));
-
-  // live clock
+  // CLOCK
   function updateClock() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('ro-RO', {hour:'2-digit', minute:'2-digit'});
-    document.getElementById('clock').textContent = `BUCUREȘTI, RO // ${time}`;
+    var now = new Date();
+    var time = now.toLocaleTimeString('ro-RO', { hour:'2-digit', minute:'2-digit' });
+    document.getElementById('clock').textContent = 'BUCUREȘTI, RO // ' + time;
   }
   updateClock();
   setInterval(updateClock, 30000);
+})();
 </script>
-
 </body>
 </html>
