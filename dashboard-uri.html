@@ -135,7 +135,63 @@
     width: 100%; height: 100%; object-fit: cover;
   }
 
-  /* MOBILE */
+  /* DASHBOARD CARDS */
+  .db-card { cursor: default; background: #0D1117; overflow: hidden; }
+  .db-bg {
+    position: absolute; inset: 0;
+    background: #0D1117;
+    filter: blur(2px);
+    opacity: 0.9;
+  }
+  .db-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0%, #00FF8722 20%, transparent 40%),
+      repeating-linear-gradient(0deg, transparent, transparent 8px, #FF4D0011 8px, #FF4D0011 9px),
+      repeating-linear-gradient(90deg, transparent, transparent 8px, #00FF8708 8px, #00FF8708 9px);
+  }
+  /* Fake chart bars */
+  .db-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 10%; right: 10%; height: 45%;
+    background:
+      linear-gradient(to top, #FF4D00 100%, transparent 100%) 0% 0% / 8% 60% no-repeat,
+      linear-gradient(to top, #FF4D00 100%, transparent 100%) 12% 0% / 8% 80% no-repeat,
+      linear-gradient(to top, #00FF87 100%, transparent 100%) 24% 0% / 8% 45% no-repeat,
+      linear-gradient(to top, #FF4D00 100%, transparent 100%) 36% 0% / 8% 90% no-repeat,
+      linear-gradient(to top, #00FF87 100%, transparent 100%) 48% 0% / 8% 55% no-repeat,
+      linear-gradient(to top, #FF4D00 100%, transparent 100%) 60% 0% / 8% 70% no-repeat,
+      linear-gradient(to top, #00FF87 100%, transparent 100%) 72% 0% / 8% 40% no-repeat,
+      linear-gradient(to top, #FF4D00 100%, transparent 100%) 84% 0% / 8% 85% no-repeat;
+    opacity: 0.3;
+  }
+  .db-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    height: 100%; padding: 14px;
+  }
+  .db-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+  .db-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(0.9rem, 1.8vw, 1.5rem);
+    text-transform: uppercase; letter-spacing: -0.02em;
+    line-height: 0.95; color: #FF4D00;
+    text-shadow: 0 0 20px rgba(255,77,0,0.3);
+  }
+  .db-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.12em; color: rgba(0,255,135,0.6);
+    text-transform: uppercase;
+  }
   @media (max-width: 768px) {
     html, body { height: auto; overflow: auto; }
     header { flex-direction: column; align-items: center; padding: 12px 4vw 0; border-bottom: none; gap: 0; }
@@ -185,14 +241,52 @@
 
   <div class="bottom">
     <div class="portfolio-header">
-      <span class="portfolio-title">// Portofoliu</span>
-      <span class="portfolio-count">Coming soon</span>
+      <span class="portfolio-title">// Ce construim</span>
+      <span class="portfolio-count">10 soluții</span>
     </div>
-    <div class="portfolio-grid" id="portfolioGrid">
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
-      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+    <div class="portfolio-grid" id="portfolioGrid" style="grid-template-columns: repeat(5,1fr);">
+
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">01</span><span class="db-title">Sales<br>Dashboard</span><span class="db-sub">Vânzări în timp real</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">02</span><span class="db-title">Marketing<br>Analytics</span><span class="db-sub">ROI per campanie</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">03</span><span class="db-title">Stock<br>Monitor</span><span class="db-sub">Stocuri live</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">04</span><span class="db-title">HR<br>Overview</span><span class="db-sub">Echipă & performanță</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">05</span><span class="db-title">Finance<br>Report</span><span class="db-sub">P&L automat</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">06</span><span class="db-title">Lead<br>Pipeline</span><span class="db-sub">Conversii & funnel</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">07</span><span class="db-title">Social<br>Metrics</span><span class="db-sub">Reach & engagement</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">08</span><span class="db-title">Delivery<br>Track</span><span class="db-sub">Comenzi & livrări</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">09</span><span class="db-title">Customer<br>360°</span><span class="db-sub">Profil complet client</span></div>
+      </div>
+      <div class="portfolio-item db-card">
+        <div class="db-bg"></div>
+        <div class="db-content"><span class="db-num">10</span><span class="db-title">KPI<br>Command</span><span class="db-sub">Toți indicatorii</span></div>
+      </div>
+
     </div>
   </div>
 </main>
