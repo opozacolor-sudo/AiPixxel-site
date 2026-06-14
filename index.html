@@ -78,7 +78,63 @@
   .head-right { display: flex; gap: 24px; align-items: center; }
   .head-right a { color: var(--ink); text-decoration: none; opacity: 0.6; transition: color 0.2s, opacity 0.2s; font-size: 11px; letter-spacing: 0.1em; }
   .head-right a:hover { color: var(--orange); opacity: 1; }
-  @media (max-width: 768px) { .head-right a:not(:last-child) { display: none; } }
+
+  @media (max-width: 768px) {
+    /* HEADER MOBIL */
+    header {
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 4vw 0;
+      border-bottom: none;
+      gap: 0;
+    }
+    .head-left {
+      width: 100%; justify-content: center;
+      font-size: 9px; order: 3;
+      padding: 8px 0;
+      border-top: 1px solid var(--orange);
+      margin-top: 8px;
+    }
+    .logo-center { font-size: 22px; letter-spacing: 0.15em; order: 1; }
+    .logo-center span { font-size: 9px; letter-spacing: 0.5em; }
+    .head-right {
+      order: 2; gap: 28px;
+      justify-content: center;
+      padding: 8px 0 0;
+      width: 100%;
+    }
+    .head-right a { opacity: 1; font-size: 10px; }
+    .head-right a:not(:last-child) { display: flex; }
+
+    /* linie portocalie sub logo */
+    .header-divider {
+      width: 100%; height: 1.5px;
+      background: var(--orange);
+      order: 2; margin-top: 8px;
+    }
+
+    /* HERO STACK MOBIL */
+    .hero-stack { width: min(150px, 40vw); height: 35vh; }
+
+    /* TAGLINE MOBIL */
+    .tagline-right { display: none; }
+    .tagline-left { left: 4vw; font-size: 0.82rem; bottom: 6%; max-width: 16ch; }
+    .tagline-sub { font-size: 0.58rem; padding: 3px 7px; }
+
+    /* RULER MOBIL */
+    .service-item { font-size: clamp(0.9rem, 5.5vw, 1.5rem); }
+    .services-viewport { height: clamp(1.3rem, 6.5vw, 1.9rem); }
+
+    /* FOOTER MOBIL */
+    .footer-top {
+      flex-direction: column; align-items: center;
+      text-align: center; gap: 8px; padding: 10px 4vw;
+    }
+    .footer-bottom {
+      flex-direction: column; align-items: center;
+      text-align: center; gap: 5px; padding: 6px 4vw 14px;
+    }
+  }
 
   /* HERO */
   .hero {
@@ -315,6 +371,7 @@
     <span id="clock">BUCUREȘTI, RO // —</span>
   </div>
   <div class="logo-center">AIPIXXEL<span>STUDIO</span></div>
+  <div class="header-divider"></div>
   <div class="head-right">
     <a href="/despre">De ce noi</a>
     <a href="/contact">Lucrează cu noi</a>
@@ -577,6 +634,18 @@
     }
   }
   window.addEventListener('resize', function() { render(false); });
+
+  // Touch swipe pe ruler
+  var touchStartX = 0;
+  var rulerEl = document.getElementById('track').parentElement.parentElement;
+  rulerEl.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  rulerEl.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) { current++; } else { current--; }
+      render(true);
+    }
+  }, { passive: true });
   requestAnimationFrame(function() { render(false); });
 
   // CLOCK
