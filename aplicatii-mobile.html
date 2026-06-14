@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aplicații Mobile — AiPixxel Studio</title>
+<meta name="description" content="Dezvoltăm aplicații mobile native pentru iOS și Android — de la MVP rapid la produse complexe cu sute de mii de utilizatori.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EFE8;
+    --ink: #1a1a1a;
+    --muted: #9b9690;
+    --line: #D5D1C9;
+    --orange: #FF4D00;
+    --green: #00FF87;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex; flex-direction: column;
+  }
+  header {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 4vw;
+    background: var(--bg);
+    border-bottom: 2px solid var(--orange);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .head-left { display: flex; gap: 10px; align-items: center; }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; flex-shrink: 0; box-shadow: 0 0 8px var(--green); }
+  @keyframes blink { 50% { opacity: 0.3; } }
+  .logo-center { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.1em; text-align: center; line-height: 1.1; color: var(--orange); text-decoration: none; }
+  .logo-center span { display: block; font-size: 7px; letter-spacing: 0.4em; font-weight: 700; opacity: 0.7; margin-top: 3px; color: var(--ink); }
+  .head-right { display: flex; gap: 24px; }
+  .head-right a { color: var(--ink); text-decoration: none; opacity: 0.6; transition: color 0.2s; font-size: 11px; letter-spacing: 0.1em; }
+  .head-right a:hover { color: var(--orange); opacity: 1; }
+
+  /* MAIN — split 50/50 */
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+  /* TOP — descriere */
+  .top {
+    flex: 1; min-height: 0;
+    display: flex; align-items: center;
+    padding: 0 6vw;
+    border-bottom: 1px solid var(--line);
+    gap: 6vw;
+  }
+  .top-left { flex: 1; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    margin-bottom: 20px; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--orange); }
+  .page-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .page-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1; text-transform: uppercase; letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .page-tagline { font-size: clamp(0.9rem, 1.5vw, 1.15rem); font-weight: 600; margin-bottom: 12px; line-height: 1.4; }
+  .page-desc { font-size: clamp(0.8rem, 1.2vw, 0.95rem); color: var(--muted); line-height: 1.6; max-width: 52ch; }
+  .page-badge {
+    display: inline-block; margin-top: 16px;
+    background: var(--green); color: var(--ink);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 5px 12px; border-radius: 3px;
+  }
+
+  .top-right {
+    flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 16px;
+    align-items: flex-end;
+  }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: var(--bg);
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 4px; text-decoration: none;
+    transition: transform 0.2s, background 0.2s; white-space: nowrap;
+  }
+  .cta-primary:hover { transform: translateY(-2px); background: #e63d00; }
+  .cta-back {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .cta-back:hover { color: var(--ink); }
+
+  /* BOTTOM — portofoliu */
+  .bottom {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column;
+    padding: 20px 6vw;
+  }
+  .portfolio-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px;
+  }
+  .portfolio-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .portfolio-count { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); font-family: 'Syne', sans-serif; font-weight: 800; }
+
+  .portfolio-grid {
+    flex: 1; min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .portfolio-item {
+    background: var(--line);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .portfolio-item:hover { transform: scale(1.02); }
+  .portfolio-item .empty-label {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-align: center; padding: 10px;
+  }
+  .portfolio-item img,
+  .portfolio-item video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    html, body { height: auto; overflow: auto; }
+    header { flex-direction: column; align-items: center; padding: 12px 4vw 0; border-bottom: none; gap: 0; }
+    .head-left { width: 100%; justify-content: center; font-size: 9px; order: 3; padding: 8px 0; border-top: 1px solid var(--orange); margin-top: 8px; }
+    .logo-center { font-size: 22px; order: 1; }
+    .logo-center span { font-size: 9px; }
+    .head-right { order: 2; gap: 24px; justify-content: center; padding: 8px 0 0; width: 100%; }
+    .head-right a { opacity: 1; font-size: 10px; }
+    .head-right a:not(:last-child) { display: flex; }
+
+    main { flex: none; }
+    .top { flex-direction: column; padding: 24px 5vw; gap: 20px; border-bottom: 1px solid var(--line); }
+    .top-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .bottom { padding: 16px 5vw 32px; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="head-left">
+    <span class="live-dot"></span>
+    <span id="clock">BUCUREȘTI, RO // —</span>
+  </div>
+  <a href="/" class="logo-center">AIPIXXEL<span>STUDIO</span></a>
+  <div class="head-right">
+    <a href="/despre">De ce noi</a>
+    <a href="/contact">Lucrează cu noi</a>
+  </div>
+</header>
+
+<main>
+  <div class="top">
+    <div class="top-left">
+      <a href="/" class="back-link">← Înapoi</a>
+      <div class="page-tag">// Aplicații Mobile</div>
+      <h1 class="page-title">Ai o idee. Noi o punem pe telefoane.</h1>
+      <p class="page-tagline">De la concept la App Store în 30 de zile. Fără scuze.</p>
+      <p class="page-desc">Nu știi de unde să începi? Noi știm. De la wireframe la lansare, suntem alături la fiecare pas. Plăți integrate, notificări, AI — tot ce ai nevoie.</p>
+      <span class="page-badge">iOS + Android</span>
+    </div>
+    <div class="top-right">
+      <a href="/contact" class="cta-primary">Lucrează cu noi →</a>
+      <a href="/despre" class="cta-back">Vezi toate serviciile</a>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="portfolio-header">
+      <span class="portfolio-title">// Portofoliu</span>
+      <span class="portfolio-count">Coming soon</span>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+      <div class="portfolio-item"><span class="empty-label">Proiect<br>în curând</span></div>
+    </div>
+  </div>
+</main>
+
+<script>
+  function updateClock() {
+    var now = new Date();
+    var time = now.toLocaleTimeString('ro-RO', { hour:'2-digit', minute:'2-digit' });
+    document.getElementById('clock').textContent = 'BUCUREȘTI, RO // ' + time;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+</script>
+</body>
+</html>
