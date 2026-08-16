@@ -318,49 +318,10 @@
   .footer-bottom a { color: var(--muted); text-decoration: none; }
   .footer-bottom a:hover { color: var(--green); }
 
-  /* SPLASH SCREEN */
-  #splash {
-    position: fixed; inset: 0; z-index: 10000;
-    background: #000;
-    display: flex; align-items: center; justify-content: center;
-    transition: opacity 0.8s ease;
-  }
-  #splash.hide { opacity: 0; pointer-events: none; }
-
-  #splash-img {
-    position: absolute;
-    width: min(380px, 30vw);
-    height: min(500px, 65vh);
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 32px 64px -20px rgba(0,0,0,0.8);
-    z-index: 2;
-  }
-  @media (max-width: 768px) {
-    #splash-img { width: min(200px, 50vw); height: 50vh; }
-  }
-  .splash-word {
-    position: absolute;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    white-space: nowrap;
-  }
-  .splash-word.visible { opacity: 1; }
-
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-
-<div id="splash">
-  <video id="splash-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_2zDyOvLyC8VQwJ1Lat1LTeoLdsh/hf_20260614_112715_1c3a304e-8a03-4325-b622-744ab9b1354c.mp4" autoplay loop muted playsinline></video>
-</div>
 
 <div id="cursor">NU DA<br>CLICK</div>
 
@@ -422,98 +383,6 @@
 
 <script>
 (function() {
-  // ── SPLASH ──
-  var splashWords = [
-    { text: 'Automotive', color: '#FF4D00' },
-    { text: 'Ceasuri de Lux', color: '#00FF87' },
-    { text: 'Medical', color: '#FF4D00' },
-    { text: 'Electronice', color: '#00FF87' },
-    { text: 'Bijuterii', color: '#FF4D00' },
-    { text: 'Real Estate', color: '#00FF87' },
-    { text: 'Banking', color: '#FF4D00' },
-    { text: 'Retail', color: '#00FF87' },
-    { text: 'HoReCa', color: '#FF4D00' },
-    { text: 'Fashion', color: '#00FF87' },
-    { text: 'Cel mai bun studio digital', color: '#FF4D00' },
-    { text: 'Nu avem concurență', color: '#00FF87' },
-    { text: 'Aplicații care domină', color: '#FF4D00' },
-    { text: 'Conținut care vinde', color: '#00FF87' },
-    { text: 'Primul apel e gratis', color: '#FF4D00' },
-    { text: 'AI care lucrează pentru tine', color: '#00FF87' },
-    { text: 'Design curat. Execuție rapidă.', color: '#FF4D00' },
-    { text: 'Suntem noi, dar cei mai buni', color: '#00FF87' },
-    { text: 'Studio digital București', color: '#FF4D00' },
-    { text: 'Rezultate, nu promisiuni', color: '#00FF87' }
-  ];
-
-  var splash = document.getElementById('splash');
-
-  // Safe zones — avoid center image area
-  function randomPos() {
-    var vw = window.innerWidth;
-    var vh = window.innerHeight;
-    var imgW = Math.min(380, vw * 0.30);
-    var imgH = Math.min(500, vh * 0.65);
-    var cx = vw / 2;
-    var cy = vh / 2;
-    var margin = 40;
-    var x, y, tries = 0;
-    do {
-      x = margin + Math.random() * (vw - margin * 2);
-      y = margin + Math.random() * (vh - margin * 2);
-      tries++;
-    } while (
-      tries < 30 &&
-      x > cx - imgW / 2 - 80 && x < cx + imgW / 2 + 80 &&
-      y > cy - imgH / 2 - 40 && y < cy + imgH / 2 + 40
-    );
-    return { x: x, y: y };
-  }
-
-  var activeEls = [];
-  var wordIdx = 0;
-  var shuffled = splashWords.slice().sort(function() { return Math.random() - 0.5; });
-
-  function spawnWord() {
-    var w = shuffled[wordIdx % shuffled.length];
-    wordIdx++;
-    var pos = randomPos();
-    var el = document.createElement('div');
-    el.className = 'splash-word';
-    el.textContent = w.text;
-    el.style.color = w.color;
-    el.style.fontSize = (Math.random() * 0.5 + 0.55) + 'rem';
-    el.style.left = pos.x + 'px';
-    el.style.top  = pos.y + 'px';
-    el.style.transform = 'translate(-50%, -50%)';
-    splash.appendChild(el);
-    requestAnimationFrame(function() { el.classList.add('visible'); });
-    setTimeout(function() {
-      el.classList.remove('visible');
-      setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 280);
-    }, 400 + Math.random() * 600);
-    activeEls.push(el);
-  }
-
-  // Spawn words rapidly for 3 seconds
-  var spawnInterval = setInterval(spawnWord, 120);
-
-  function hideSplash() {
-    clearInterval(spawnInterval);
-    activeEls.forEach(function(el) { el.classList.remove('visible'); });
-    splash.classList.add('hide');
-    setTimeout(function() { splash.style.display = 'none'; }, 800);
-  }
-
-  // Force hide after 3.2s regardless of video state
-  setTimeout(hideSplash, 3200);
-
-  // Also hide immediately if video fails
-  var splashVid = document.getElementById('splash-img');
-  if (splashVid) {
-    splashVid.addEventListener('error', function() { setTimeout(hideSplash, 500); });
-  }
-
   // ── CUSTOM CURSOR ──
   var cursor = document.getElementById('cursor');
   var stack  = document.getElementById('heroStack');
