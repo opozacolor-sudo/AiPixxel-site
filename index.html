@@ -116,16 +116,13 @@
 
   .ecosystem-stage {
     position: relative;
-    width: min(calc(100vh - var(--header-h) - var(--footer-h) - 24px), calc(100vw - 32px), 920px);
-    height: min(calc(100vh - var(--header-h) - var(--footer-h) - 24px), calc(100vw - 32px), 920px);
+    width: min(calc(100vh - var(--header-h) - var(--footer-h) - 48px), calc(100vw - 48px), 520px);
+    height: min(calc(100vh - var(--header-h) - var(--footer-h) - 48px), calc(100vw - 48px), 520px);
   }
 
   .morph-frame {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 38%;
-    height: 38%;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     border: 1px solid rgba(201,164,97,0.5);
     box-shadow:
@@ -134,61 +131,8 @@
       inset 0 0 48px rgba(201,164,97,0.05);
     overflow: hidden;
     background: radial-gradient(circle, rgba(28,28,31,0.5) 0%, var(--black) 70%);
-    z-index: 3;
   }
   .morph-frame canvas { width: 100%; height: 100%; display: block; }
-
-  .cables-svg {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .cable-path { fill: none; stroke: rgba(139,92,246,0.2); stroke-width: 1; }
-  .cable-glow { fill: none; stroke: url(#cableGrad); stroke-width: 1.5; opacity: 0.55; }
-  .cable-pulse { fill: var(--violet); filter: drop-shadow(0 0 5px var(--violet)); }
-
-  .pillar-node {
-    position: absolute;
-    width: clamp(130px, 16vw, 175px);
-    transform: translate(-50%, -50%);
-    z-index: 4;
-  }
-  .pillar-node-inner {
-    background: rgba(28,28,31,0.92);
-    border: 1px solid rgba(201,164,97,0.22);
-    border-radius: 3px;
-    padding: 10px 12px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .pillar-node:hover .pillar-node-inner,
-  .pillar-node.expanded .pillar-node-inner {
-    border-color: rgba(139,92,246,0.55);
-    box-shadow: 0 0 20px rgba(139,92,246,0.18);
-  }
-  .pillar-num {
-    font-size: 0.58rem; font-weight: 600;
-    letter-spacing: 0.14em; color: var(--gold);
-    margin-bottom: 4px;
-  }
-  .pillar-title {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.03em; line-height: 1.25;
-  }
-  .pillar-desc {
-    max-height: 0; overflow: hidden; opacity: 0;
-    font-size: 0.68rem; font-weight: 400;
-    color: rgba(245,242,235,0.58);
-    line-height: 1.45;
-    transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
-  }
-  .pillar-node:hover .pillar-desc,
-  .pillar-node.expanded .pillar-desc {
-    max-height: 100px; margin-top: 8px; opacity: 1;
-  }
-
-  /* Mobile pillars — hidden on desktop */
-  .pillar-mobile { display: none; }
 
   /* ── FOOTER ── */
   footer {
@@ -201,86 +145,6 @@
     color: rgba(245,242,235,0.35);
   }
   footer a:hover { color: var(--gold); }
-
-  /* ── MOBILE ── */
-  @media (max-width: 900px) {
-    .pillar-node, .cables-svg { display: none; }
-
-    main {
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-      padding: 12px 16px 8px;
-      gap: 12px;
-    }
-
-    .ecosystem-stage {
-      width: min(200px, 52vw);
-      height: min(200px, 52vw);
-      margin: 0 auto;
-      flex-shrink: 0;
-    }
-
-    .morph-frame {
-      position: relative;
-      top: auto; left: auto;
-      transform: none;
-      width: 100%; height: 100%;
-    }
-
-    .pillar-mobile {
-      display: block;
-      flex: 1; min-height: 0;
-      position: relative;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-left: 36px;
-    }
-    .pillar-mobile-line {
-      position: fixed;
-      left: 28px;
-      top: calc(var(--header-h) + min(200px, 52vw) + 28px);
-      bottom: var(--footer-h);
-      width: 1px;
-      background: linear-gradient(180deg, var(--violet), rgba(139,92,246,0.08));
-      box-shadow: 0 0 10px var(--violet-dim);
-      pointer-events: none;
-    }
-    .pillar-mobile-line::after {
-      content: '';
-      position: absolute; left: -2px; width: 5px; height: 5px;
-      background: var(--violet); border-radius: 50%;
-      box-shadow: 0 0 8px var(--violet);
-      animation: flowDown 2.8s linear infinite;
-    }
-    @keyframes flowDown {
-      0% { top: 0; opacity: 1; }
-      100% { top: calc(100% - 5px); opacity: 0.2; }
-    }
-    .pillar-mobile-item { margin-bottom: 6px; position: relative; }
-    .pillar-mobile-item::before {
-      content: '';
-      position: absolute; left: -22px; top: 14px;
-      width: 8px; height: 8px;
-      border: 1px solid var(--gold); border-radius: 50%;
-      background: var(--black); z-index: 1;
-    }
-    .pillar-mobile-btn {
-      width: 100%; text-align: left;
-      background: var(--anthracite);
-      border: 1px solid rgba(201,164,97,0.15);
-      border-radius: 3px; padding: 10px 12px;
-    }
-    .pillar-mobile-item.open .pillar-mobile-btn { border-color: rgba(139,92,246,0.4); }
-    .pillar-mobile-desc {
-      display: none;
-      padding: 8px 12px 10px;
-      font-size: 0.72rem; color: rgba(245,242,235,0.55);
-      border: 1px solid rgba(201,164,97,0.08);
-      border-top: none; border-radius: 0 0 3px 3px;
-    }
-    .pillar-mobile-item.open .pillar-mobile-desc { display: block; }
-  }
 
   @media (max-width: 768px) {
     .nav-toggle { display: flex; }
@@ -319,13 +183,13 @@
     <li class="has-dropdown" id="servicesDropdown">
       <button type="button">Servicii</button>
       <div class="dropdown">
-        <a href="/" data-pillar="0">Analiză de business</a>
+        <a href="/strategie-marketing">Analiză de business</a>
         <a href="/strategie-marketing">Strategie de dezvoltare</a>
         <a href="/site-uri">Website-uri &amp; sisteme</a>
         <a href="/automatizari">Automatizări &amp; tools</a>
         <a href="/strategie-marketing">Campanii Ads</a>
         <a href="https://posty.app" target="_blank" rel="noopener">Social media AI · Posty ↗</a>
-        <a href="/" data-pillar="6">Email marketing AI</a>
+        <a href="/contact">Email marketing AI</a>
         <p class="note">Posty — recomandare partener</p>
       </div>
     </li>
@@ -335,26 +199,11 @@
 </header>
 
 <main>
-  <div class="ecosystem-stage" id="ecosystemStage">
-    <svg class="cables-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#C9A461" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.85"/>
-        </linearGradient>
-      </defs>
-      <g id="cablesGroup"></g>
-    </svg>
-
+  <div class="ecosystem-stage">
     <div class="morph-frame" id="morphFrame">
       <canvas id="morphCanvas"></canvas>
     </div>
-
-    <div id="pillarNodes"></div>
   </div>
-
-  <div class="pillar-mobile-line" aria-hidden="true"></div>
-  <div class="pillar-mobile" id="pillarMobile"></div>
 </main>
 
 <footer>
@@ -364,16 +213,6 @@
 
 <script>
 (function() {
-  var PILLARS = [
-    { num: '01', title: 'Cum aduci un client', desc: 'Profil client, triggeri de cumpărare, cât și când cheltuie — plus potențialul real de scalare.' },
-    { num: '02', title: 'Planul de creștere', desc: 'Strategie sustenabilă pe termen mediu/lung, cu manual de implementare pentru achiziție și fidelizare.' },
-    { num: '03', title: 'Infrastructura digitală', desc: 'Website-uri și sisteme cu baze de date — fundația pe care rulează tot restul.' },
-    { num: '04', title: 'Sisteme interne', desc: 'Automatizări, agenți de suport, dashboard-uri și aplicații mobile.' },
-    { num: '05', title: 'Achiziție plătită', desc: 'Campanii Ads social media optimizate pe date — nu pe presupuneri.' },
-    { num: '06', title: 'Prezență socială', desc: 'Social media management AI. Recomandăm Posty — partener, nu serviciu AiPixxel.' },
-    { num: '07', title: 'Fidelizare inteligentă', desc: 'Email marketing AI cu analiză și personalizare per client.' }
-  ];
-
   var SHAPE_FILES = [
     'icons/01-factory.png', 'icons/03-car.png', 'icons/04-dining.png',
     'icons/06-store.png', 'icons/07-house.png', 'icons/08-code.png',
@@ -386,9 +225,7 @@
   var HOLD_MS = 1900;
   var GOLD = [201, 164, 97];
   var VIOLET = [139, 92, 246];
-  var CX = 500, CY = 500, FRAME_R = 195, NODE_R = 420;
 
-  /* Nav */
   document.getElementById('navToggle').addEventListener('click', function() {
     document.body.classList.toggle('menu-open');
   });
@@ -398,89 +235,6 @@
       document.getElementById('servicesDropdown').classList.toggle('open');
     }
   });
-  document.querySelectorAll('.dropdown a[data-pillar]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      expandPillar(parseInt(a.getAttribute('data-pillar'), 10));
-      document.body.classList.remove('menu-open');
-    });
-  });
-
-  /* Pillars desktop */
-  var cablesGroup = document.getElementById('cablesGroup');
-  var pillarNodesEl = document.getElementById('pillarNodes');
-
-  PILLARS.forEach(function(p, i) {
-    var angle = (-Math.PI / 2) + (i * 2 * Math.PI / 7);
-    var nx = CX + Math.cos(angle) * NODE_R;
-    var ny = CY + Math.sin(angle) * NODE_R;
-    var ex = CX + Math.cos(angle) * (FRAME_R + 6);
-    var ey = CY + Math.sin(angle) * (FRAME_R + 6);
-    var cpx = CX + Math.cos(angle) * (FRAME_R + NODE_R) * 0.42;
-    var cpy = CY + Math.sin(angle) * (FRAME_R + NODE_R) * 0.42;
-    var d = 'M' + ex + ',' + ey + ' Q' + cpx + ',' + cpy + ' ' + nx + ',' + ny;
-
-    ['cable-path', 'cable-glow'].forEach(function(cls) {
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', d);
-      path.setAttribute('class', cls);
-      cablesGroup.appendChild(path);
-    });
-
-    var pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    pulse.setAttribute('r', '3');
-    pulse.setAttribute('class', 'cable-pulse');
-    var anim = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-    anim.setAttribute('dur', (2 + i * 0.12) + 's');
-    anim.setAttribute('repeatCount', 'indefinite');
-    anim.setAttribute('path', d);
-    pulse.appendChild(anim);
-    cablesGroup.appendChild(pulse);
-
-    var node = document.createElement('div');
-    node.className = 'pillar-node';
-    node.style.left = (nx / 1000 * 100) + '%';
-    node.style.top = (ny / 1000 * 100) + '%';
-    node.setAttribute('data-index', i);
-    node.innerHTML = '<div class="pillar-node-inner"><div class="pillar-num">' + p.num + '</div><div class="pillar-title">' + p.title + '</div><div class="pillar-desc">' + p.desc + '</div></div>';
-    pillarNodesEl.appendChild(node);
-
-    if (window.matchMedia('(hover: none)').matches) {
-      node.addEventListener('click', function() { togglePillar(i); });
-    }
-  });
-
-  /* Pillars mobile */
-  var pillarMobile = document.getElementById('pillarMobile');
-  PILLARS.forEach(function(p, i) {
-    var item = document.createElement('div');
-    item.className = 'pillar-mobile-item';
-    item.setAttribute('data-index', i);
-    item.innerHTML = '<button class="pillar-mobile-btn" type="button"><div class="pillar-num">' + p.num + '</div><div class="pillar-title">' + p.title + '</div></button><div class="pillar-mobile-desc">' + p.desc + '</div>';
-    pillarMobile.appendChild(item);
-    item.querySelector('button').addEventListener('click', function() { togglePillar(i); });
-  });
-
-  function togglePillar(idx) {
-    document.querySelectorAll('.pillar-node').forEach(function(n) {
-      var match = parseInt(n.getAttribute('data-index'), 10) === idx;
-      n.classList.toggle('expanded', match ? !n.classList.contains('expanded') : false);
-    });
-    document.querySelectorAll('.pillar-mobile-item').forEach(function(item) {
-      var match = parseInt(item.getAttribute('data-index'), 10) === idx;
-      item.classList.toggle('open', match ? !item.classList.contains('open') : false);
-    });
-  }
-
-  function expandPillar(idx) {
-    document.querySelectorAll('.pillar-node, .pillar-mobile-item').forEach(function(el) {
-      el.classList.remove('expanded', 'open');
-    });
-    var node = document.querySelector('.pillar-node[data-index="' + idx + '"]');
-    if (node) node.classList.add('expanded');
-    var m = document.querySelector('.pillar-mobile-item[data-index="' + idx + '"]');
-    if (m) m.classList.add('open');
-  }
 
   /* Particle morph */
   var canvas = document.getElementById('morphCanvas');
