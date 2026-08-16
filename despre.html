@@ -87,6 +87,14 @@
     display:block; font-size:10px; font-weight:600; letter-spacing:.8px;
     text-transform:uppercase; color:var(--gold); margin-bottom:2px; opacity:.85;
   }
+  a.nav-contact{
+    opacity:1 !important;
+    padding:8px 14px; border-radius:999px;
+    background:var(--gold); color:var(--ink) !important;
+    font-size:13px; transition:background .2s, transform .2s;
+  }
+  a.nav-contact:hover{ background:#d4b06a; transform:translateY(-1px); }
+  a.nav-contact.active{ background:var(--cream); }
 
   .hero{
     padding: clamp(70px,12vh,140px) 0 clamp(50px,8vh,90px) 0;
@@ -234,6 +242,7 @@
       </div>
     </div>
     <a href="/despre" class="active">Despre</a>
+    <a href="/contact" class="nav-contact">Contact</a>
   </nav>
 </header>
 

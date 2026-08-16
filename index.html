@@ -64,6 +64,16 @@
   }
   nav.links > a:hover, nav.links > a.active{ opacity:1; }
 
+  a.nav-contact{
+    opacity:1 !important;
+    padding:clamp(7px,1vh,9px) clamp(12px,1.6vw,16px);
+    border-radius:999px;
+    background:var(--ink); color:var(--cream) !important;
+    font-size:clamp(10px,1.1vw,12px);
+    transition:background .2s, transform .2s;
+  }
+  a.nav-contact:hover{ background:var(--ink-2); transform:translateY(-1px); }
+
   .nav-drop{ position:relative; display:inline-flex; align-items:center; }
   .nav-drop>button{
     background:none; border:none; cursor:pointer;
@@ -448,6 +458,7 @@
         </div>
       </div>
       <a href="/despre">Despre</a>
+      <a href="/contact" class="nav-contact">Contact</a>
     </nav>
   </header>
 

@@ -22,6 +22,7 @@ function serviceNav(activeSlug) {
           '<div class="drop-menu">' + links + "</div>" +
         "</div>" +
         '<a href="/despre">Despre</a>' +
+        '<a href="/contact" class="nav-contact">Contact</a>' +
       "</nav>" +
     "</header>"
   );
