@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AiPixxel — Consultanță de marketing & business</title>
-<meta name="description" content="AiPixxel leagă analiza de business cu execuția reală: strategie, ads, automatizări, email și social. Orice afacere poate avea succes — cu un sistem, nu cu fragmente.">
-<meta property="og:title" content="AiPixxel — Consultanță de marketing & business">
-<meta property="og:description" content="Construim ecosisteme de creștere pentru companii care vor să scaleze cu date, nu cu intuiție.">
+<title>AiPixxel — Consultanță marketing &amp; business</title>
+<meta name="description" content="Orice afacere poate avea succes. AiPixxel leagă analiza de business cu execuția reală — strategie, ads, automatizări, email.">
+<meta property="og:title" content="AiPixxel — Consultanță marketing &amp; business">
+<meta property="og:description" content="Sistem integrat de creștere pentru companii care vor să scaleze cu date, nu cu intuiție.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aipixxel.online">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://aipixxel.online">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #0A0A0B;
@@ -20,75 +20,72 @@
     --gold: #C9A461;
     --warm-white: #F5F2EB;
     --violet: #8B5CF6;
-    --gold-dim: rgba(201,164,97,0.35);
     --violet-dim: rgba(139,92,246,0.25);
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Outfit', system-ui, sans-serif;
-    --max: 1180px;
-    --nav-h: 72px;
+    --header-h: 56px;
+    --footer-h: 36px;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html, body { height: 100%; overflow: hidden; }
   body {
     background: var(--black);
     color: var(--warm-white);
     font-family: var(--font-body);
-    font-weight: 400;
-    line-height: 1.6;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   a { color: inherit; text-decoration: none; }
   button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
-  .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-
-  /* ── NAV ── */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: var(--nav-h);
-    background: rgba(10,10,11,0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(201,164,97,0.15);
-  }
-  .nav-inner {
-    height: 100%;
+  /* ── HEADER ── */
+  header {
+    flex-shrink: 0;
+    height: var(--header-h);
     display: flex; align-items: center; justify-content: space-between;
-    width: min(var(--max), calc(100% - 48px)); margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 48px);
+    border-bottom: 1px solid rgba(201,164,97,0.18);
+    background: var(--black);
+    z-index: 100;
   }
   .logo {
     font-family: var(--font-display);
-    font-size: 1.35rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
+    font-size: 1.1rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--gold);
   }
-  .logo span { color: var(--warm-white); font-weight: 500; opacity: 0.7; font-size: 0.65em; letter-spacing: 0.35em; display: block; margin-top: 2px; }
-  .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+  .logo small {
+    display: block; font-family: var(--font-body);
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.35em; color: rgba(245,242,235,0.45);
+    margin-top: 2px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
   .nav-links > li { position: relative; }
   .nav-links > li > a,
   .nav-links > li > button {
-    display: block; padding: 10px 16px;
-    font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: rgba(245,242,235,0.65);
+    padding: 8px 14px;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,242,235,0.55);
     transition: color 0.2s;
   }
   .nav-links > li > a:hover,
   .nav-links > li > button:hover,
   .nav-links > li > a.active { color: var(--gold); }
-  .nav-links .has-dropdown > button::after {
-    content: '▾'; margin-left: 6px; font-size: 0.7em; opacity: 0.5;
-  }
+  .has-dropdown > button::after { content: ' ▾'; opacity: 0.45; font-size: 0.85em; }
   .dropdown {
-    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(8px);
-    min-width: 240px; padding: 8px;
+    position: absolute; top: calc(100% + 6px); left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 220px; padding: 6px;
     background: var(--anthracite);
     border: 1px solid rgba(201,164,97,0.2);
-    border-radius: 4px;
+    border-radius: 3px;
     opacity: 0; visibility: hidden; pointer-events: none;
     transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-    box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
   }
   .has-dropdown:hover .dropdown,
   .has-dropdown.open .dropdown {
@@ -96,587 +93,291 @@
     transform: translateX(-50%) translateY(0);
   }
   .dropdown a {
-    display: block; padding: 10px 14px;
-    font-size: 0.82rem; color: rgba(245,242,235,0.75);
-    border-radius: 3px; transition: background 0.15s, color 0.15s;
+    display: block; padding: 9px 12px;
+    font-size: 0.76rem; color: rgba(245,242,235,0.72);
+    border-radius: 2px;
   }
-  .dropdown a:hover { background: rgba(139,92,246,0.12); color: var(--warm-white); }
-  .dropdown .note { font-size: 0.72rem; color: rgba(245,242,235,0.4); padding: 8px 14px 4px; border-top: 1px solid rgba(201,164,97,0.1); margin-top: 4px; }
-  .nav-toggle { display: none; width: 40px; height: 40px; flex-direction: column; justify-content: center; gap: 6px; padding: 8px; }
-  .nav-toggle span { display: block; height: 1px; background: var(--gold); transition: transform 0.25s, opacity 0.25s; }
+  .dropdown a:hover { background: rgba(139,92,246,0.1); color: var(--warm-white); }
+  .dropdown .note {
+    font-size: 0.65rem; color: rgba(245,242,235,0.35);
+    padding: 6px 12px 2px; margin-top: 4px;
+    border-top: 1px solid rgba(201,164,97,0.1);
+  }
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+  .nav-toggle span { display: block; width: 20px; height: 1px; background: var(--gold); }
 
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 28px;
-    font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    border-radius: 2px; transition: all 0.25s;
-  }
-  .btn-primary {
-    background: var(--violet); color: var(--warm-white);
-    box-shadow: 0 0 24px var(--violet-dim);
-  }
-  .btn-primary:hover {
-    box-shadow: 0 0 36px rgba(139,92,246,0.45);
-    transform: translateY(-1px);
-  }
-  .btn-outline {
-    border: 1px solid var(--gold); color: var(--gold);
-  }
-  .btn-outline:hover { background: rgba(201,164,97,0.08); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh; padding: calc(var(--nav-h) + 64px) 0 80px;
-    display: flex; align-items: center;
+  /* ── MAIN VIEWPORT ── */
+  main {
+    flex: 1; min-height: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
     position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,92,246,0.08), transparent 70%);
-    pointer-events: none;
-  }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; }
-  .hero-eyebrow {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 600; line-height: 1.08;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero-lead {
-    font-size: 1.05rem; font-weight: 300;
-    color: rgba(245,242,235,0.72);
-    max-width: 480px; margin-bottom: 36px;
-  }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-  .hero-meta {
-    margin-top: 48px; padding-top: 24px;
-    border-top: 1px solid rgba(201,164,97,0.15);
-    font-size: 0.78rem; color: rgba(245,242,235,0.4);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── ECOSYSTEM / MORPH ── */
-  .ecosystem {
-    padding: 100px 0 120px;
-    background: linear-gradient(180deg, var(--black) 0%, var(--anthracite) 50%, var(--black) 100%);
-    position: relative; overflow: hidden;
-  }
-  .section-label {
-    text-align: center; margin-bottom: 16px;
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold);
-  }
-  .section-title {
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 600; margin-bottom: 12px;
-  }
-  .section-sub {
-    text-align: center; max-width: 560px; margin: 0 auto 56px;
-    color: rgba(245,242,235,0.55); font-weight: 300;
   }
 
   .ecosystem-stage {
     position: relative;
-    width: min(1000px, 100%);
-    margin: 0 auto;
-    aspect-ratio: 1;
+    width: min(calc(100vh - var(--header-h) - var(--footer-h) - 24px), calc(100vw - 32px), 920px);
+    height: min(calc(100vh - var(--header-h) - var(--footer-h) - 24px), calc(100vw - 32px), 920px);
   }
 
   .morph-frame {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: min(340px, 42vw);
-    height: min(340px, 42vw);
+    width: 38%;
+    height: 38%;
     border-radius: 50%;
-    border: 1px solid rgba(201,164,97,0.45);
+    border: 1px solid rgba(201,164,97,0.5);
     box-shadow:
-      0 0 40px rgba(201,164,97,0.12),
-      0 0 80px rgba(139,92,246,0.08),
-      inset 0 0 60px rgba(201,164,97,0.04);
+      0 0 48px rgba(201,164,97,0.14),
+      0 0 96px rgba(139,92,246,0.1),
+      inset 0 0 48px rgba(201,164,97,0.05);
     overflow: hidden;
-    background: radial-gradient(circle at 50% 50%, rgba(28,28,31,0.6), var(--black));
+    background: radial-gradient(circle, rgba(28,28,31,0.5) 0%, var(--black) 70%);
+    z-index: 3;
   }
-  .morph-frame canvas {
-    width: 100%; height: 100%;
-    display: block;
-  }
+  .morph-frame canvas { width: 100%; height: 100%; display: block; }
 
   .cables-svg {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     pointer-events: none;
+    z-index: 1;
   }
-  .cable-path {
-    fill: none;
-    stroke: rgba(139,92,246,0.25);
-    stroke-width: 1;
-  }
-  .cable-glow {
-    fill: none;
-    stroke: url(#cableGrad);
-    stroke-width: 1.5;
-    opacity: 0.6;
-  }
-  .cable-pulse {
-    fill: var(--violet);
-    filter: drop-shadow(0 0 6px var(--violet));
-  }
+  .cable-path { fill: none; stroke: rgba(139,92,246,0.2); stroke-width: 1; }
+  .cable-glow { fill: none; stroke: url(#cableGrad); stroke-width: 1.5; opacity: 0.55; }
+  .cable-pulse { fill: var(--violet); filter: drop-shadow(0 0 5px var(--violet)); }
 
   .pillar-node {
     position: absolute;
-    width: 190px;
+    width: clamp(130px, 16vw, 175px);
     transform: translate(-50%, -50%);
-    z-index: 2;
-    pointer-events: auto;
+    z-index: 4;
   }
   .pillar-node-inner {
-    background: var(--anthracite);
-    border: 1px solid rgba(201,164,97,0.2);
-    border-radius: 4px;
-    padding: 14px 16px;
-    transition: border-color 0.25s, box-shadow 0.25s;
-    cursor: default;
+    background: rgba(28,28,31,0.92);
+    border: 1px solid rgba(201,164,97,0.22);
+    border-radius: 3px;
+    padding: 10px 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .pillar-node:hover .pillar-node-inner,
   .pillar-node.expanded .pillar-node-inner {
-    border-color: rgba(139,92,246,0.5);
-    box-shadow: 0 0 24px rgba(139,92,246,0.15);
+    border-color: rgba(139,92,246,0.55);
+    box-shadow: 0 0 20px rgba(139,92,246,0.18);
   }
   .pillar-num {
-    font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.15em; color: var(--gold);
-    margin-bottom: 6px;
+    font-size: 0.58rem; font-weight: 600;
+    letter-spacing: 0.14em; color: var(--gold);
+    margin-bottom: 4px;
   }
   .pillar-title {
-    font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.04em; line-height: 1.3;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.03em; line-height: 1.25;
   }
   .pillar-desc {
-    max-height: 0; overflow: hidden;
-    font-size: 0.78rem; font-weight: 300;
-    color: rgba(245,242,235,0.6);
-    line-height: 1.5;
-    transition: max-height 0.35s ease, margin-top 0.35s ease, opacity 0.35s ease;
-    opacity: 0;
+    max-height: 0; overflow: hidden; opacity: 0;
+    font-size: 0.68rem; font-weight: 400;
+    color: rgba(245,242,235,0.58);
+    line-height: 1.45;
+    transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
   }
   .pillar-node:hover .pillar-desc,
   .pillar-node.expanded .pillar-desc {
-    max-height: 120px; margin-top: 10px; opacity: 1;
+    max-height: 100px; margin-top: 8px; opacity: 1;
   }
 
-  /* Mobile pillar list */
-  .pillar-mobile { display: none; margin-top: 48px; position: relative; }
-  .pillar-mobile-line {
-    position: absolute; left: 19px; top: 0; bottom: 0; width: 1px;
-    background: linear-gradient(180deg, var(--violet), rgba(139,92,246,0.1));
-    box-shadow: 0 0 12px var(--violet-dim);
-  }
-  .pillar-mobile-line::after {
-    content: '';
-    position: absolute; left: -3px; width: 7px; height: 7px;
-    background: var(--violet); border-radius: 50%;
-    box-shadow: 0 0 12px var(--violet);
-    animation: flowDown 3s linear infinite;
-  }
-  @keyframes flowDown {
-    0% { top: 0; opacity: 1; }
-    100% { top: calc(100% - 7px); opacity: 0.3; }
-  }
-  .pillar-mobile-item {
-    position: relative; padding: 0 0 0 48px; margin-bottom: 8px;
-  }
-  .pillar-mobile-item::before {
-    content: '';
-    position: absolute; left: 14px; top: 18px;
-    width: 11px; height: 11px;
-    border: 1px solid var(--gold);
-    border-radius: 50%; background: var(--black);
-    z-index: 1;
-  }
-  .pillar-mobile-btn {
-    width: 100%; text-align: left;
-    background: var(--anthracite);
-    border: 1px solid rgba(201,164,97,0.15);
-    border-radius: 4px; padding: 16px 18px;
-    transition: border-color 0.2s;
-  }
-  .pillar-mobile-btn[aria-expanded="true"] { border-color: rgba(139,92,246,0.4); }
-  .pillar-mobile-desc {
-    display: none; padding: 12px 18px 16px;
-    font-size: 0.82rem; font-weight: 300;
-    color: rgba(245,242,235,0.6);
-    border: 1px solid rgba(201,164,97,0.1);
-    border-top: none; border-radius: 0 0 4px 4px;
-    background: rgba(10,10,11,0.5);
-  }
-  .pillar-mobile-item.open .pillar-mobile-desc { display: block; }
-
-  /* ── STORY SECTIONS ── */
-  .story-section { padding: 100px 0; }
-  .story-section.alt { background: var(--anthracite); }
-  .story-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 64px; align-items: center;
-  }
-  .story-grid.reverse { direction: rtl; }
-  .story-grid.reverse > * { direction: ltr; }
-  .story-tag {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--violet); margin-bottom: 16px;
-  }
-  .story-section h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 600; line-height: 1.15;
-    margin-bottom: 20px;
-  }
-  .story-section p {
-    color: rgba(245,242,235,0.68);
-    font-weight: 300; margin-bottom: 16px;
-  }
-  .pain-list { list-style: none; margin-top: 24px; }
-  .pain-list li {
-    padding: 14px 0 14px 24px;
-    border-bottom: 1px solid rgba(201,164,97,0.1);
-    position: relative;
-    font-size: 0.92rem; color: rgba(245,242,235,0.75);
-  }
-  .pain-list li::before {
-    content: '—'; position: absolute; left: 0; color: var(--gold);
-  }
-  .reveal-cards { display: grid; gap: 16px; }
-  .reveal-card {
-    padding: 24px;
-    background: rgba(10,10,11,0.5);
-    border: 1px solid rgba(201,164,97,0.15);
-    border-left: 2px solid var(--gold);
-    border-radius: 2px;
-  }
-  .reveal-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.15rem; font-weight: 600;
-    margin-bottom: 8px; color: var(--gold);
-  }
-  .reveal-card p { font-size: 0.88rem; margin: 0; }
-
-  /* ── PROOF ── */
-  .proof-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 24px; margin-top: 48px;
-  }
-  .proof-card {
-    padding: 32px 24px; text-align: center;
-    background: var(--anthracite);
-    border: 1px dashed rgba(201,164,97,0.25);
-    border-radius: 4px;
-  }
-  .proof-value {
-    font-family: var(--font-display);
-    font-size: 2.4rem; font-weight: 700;
-    color: var(--gold); margin-bottom: 8px;
-  }
-  .proof-label {
-    font-size: 0.78rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(245,242,235,0.45);
-  }
-  .testimonial {
-    margin-top: 48px; padding: 40px;
-    border: 1px solid rgba(201,164,97,0.15);
-    border-radius: 4px; text-align: center;
-    background: rgba(28,28,31,0.5);
-  }
-  .testimonial blockquote {
-    font-family: var(--font-display);
-    font-size: 1.3rem; font-style: italic;
-    color: rgba(245,242,235,0.8);
-    max-width: 640px; margin: 0 auto 16px;
-  }
-  .testimonial cite {
-    font-size: 0.78rem; font-style: normal;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(245,242,235,0.4);
-  }
-
-  /* ── CTA FINAL ── */
-  .cta-final {
-    padding: 120px 0;
-    text-align: center;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 100%, rgba(139,92,246,0.12), transparent),
-      var(--black);
-  }
-  .cta-final h2 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600; margin-bottom: 16px;
-  }
-  .cta-final p {
-    max-width: 520px; margin: 0 auto 36px;
-    color: rgba(245,242,235,0.6); font-weight: 300;
-  }
+  /* Mobile pillars — hidden on desktop */
+  .pillar-mobile { display: none; }
 
   /* ── FOOTER ── */
   footer {
-    padding: 40px 0;
+    flex-shrink: 0;
+    height: var(--footer-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(16px, 4vw, 48px);
     border-top: 1px solid rgba(201,164,97,0.12);
-    font-size: 0.78rem; color: rgba(245,242,235,0.4);
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    color: rgba(245,242,235,0.35);
   }
-  .footer-inner {
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-  }
-  .footer-inner a:hover { color: var(--gold); }
+  footer a:hover { color: var(--gold); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .hero-grid, .story-grid { grid-template-columns: 1fr; gap: 40px; }
-    .story-grid.reverse { direction: ltr; }
-    .proof-grid { grid-template-columns: 1fr; }
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
     .pillar-node, .cables-svg { display: none; }
-    .pillar-mobile { display: block; }
-    .ecosystem-stage { aspect-ratio: auto; }
-    .morph-frame {
-      position: relative; top: auto; left: auto;
-      transform: none; margin: 0 auto;
-      width: min(260px, 70vw); height: min(260px, 70vw);
+
+    main {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 12px 16px 8px;
+      gap: 12px;
     }
+
+    .ecosystem-stage {
+      width: min(200px, 52vw);
+      height: min(200px, 52vw);
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+
+    .morph-frame {
+      position: relative;
+      top: auto; left: auto;
+      transform: none;
+      width: 100%; height: 100%;
+    }
+
+    .pillar-mobile {
+      display: block;
+      flex: 1; min-height: 0;
+      position: relative;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-left: 36px;
+    }
+    .pillar-mobile-line {
+      position: fixed;
+      left: 28px;
+      top: calc(var(--header-h) + min(200px, 52vw) + 28px);
+      bottom: var(--footer-h);
+      width: 1px;
+      background: linear-gradient(180deg, var(--violet), rgba(139,92,246,0.08));
+      box-shadow: 0 0 10px var(--violet-dim);
+      pointer-events: none;
+    }
+    .pillar-mobile-line::after {
+      content: '';
+      position: absolute; left: -2px; width: 5px; height: 5px;
+      background: var(--violet); border-radius: 50%;
+      box-shadow: 0 0 8px var(--violet);
+      animation: flowDown 2.8s linear infinite;
+    }
+    @keyframes flowDown {
+      0% { top: 0; opacity: 1; }
+      100% { top: calc(100% - 5px); opacity: 0.2; }
+    }
+    .pillar-mobile-item { margin-bottom: 6px; position: relative; }
+    .pillar-mobile-item::before {
+      content: '';
+      position: absolute; left: -22px; top: 14px;
+      width: 8px; height: 8px;
+      border: 1px solid var(--gold); border-radius: 50%;
+      background: var(--black); z-index: 1;
+    }
+    .pillar-mobile-btn {
+      width: 100%; text-align: left;
+      background: var(--anthracite);
+      border: 1px solid rgba(201,164,97,0.15);
+      border-radius: 3px; padding: 10px 12px;
+    }
+    .pillar-mobile-item.open .pillar-mobile-btn { border-color: rgba(139,92,246,0.4); }
+    .pillar-mobile-desc {
+      display: none;
+      padding: 8px 12px 10px;
+      font-size: 0.72rem; color: rgba(245,242,235,0.55);
+      border: 1px solid rgba(201,164,97,0.08);
+      border-top: none; border-radius: 0 0 3px 3px;
+    }
+    .pillar-mobile-item.open .pillar-mobile-desc { display: block; }
   }
 
   @media (max-width: 768px) {
     .nav-toggle { display: flex; }
     .nav-links {
-      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      position: fixed;
+      top: var(--header-h); left: 0; right: 0;
       flex-direction: column; align-items: stretch;
       background: var(--anthracite);
       border-bottom: 1px solid rgba(201,164,97,0.15);
-      padding: 16px; gap: 4px;
-      transform: translateY(-120%); opacity: 0;
-      transition: transform 0.3s, opacity 0.3s;
-      pointer-events: none;
+      padding: 12px;
+      transform: translateY(-110%);
+      opacity: 0; pointer-events: none;
+      transition: transform 0.25s, opacity 0.25s;
     }
-    .nav.open .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    body.menu-open .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; }
     .dropdown {
       position: static; transform: none; opacity: 1; visibility: visible;
       pointer-events: auto; box-shadow: none; border: none;
-      background: rgba(10,10,11,0.5); margin-top: 4px; display: none;
+      background: rgba(10,10,11,0.45); margin-top: 4px; display: none;
     }
     .has-dropdown.open .dropdown { display: block; }
-    .hero { min-height: auto; padding-bottom: 60px; }
-    .hero-actions { flex-direction: column; }
-    .btn { width: 100%; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 </style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">AiPixxel<span>Consulting</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Meniu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/" class="active">Acasă</a></li>
-      <li class="has-dropdown" id="servicesDropdown">
-        <button type="button" aria-expanded="false">Servicii</button>
-        <div class="dropdown">
-          <a href="/#ecosystem" data-pillar="0">Analiză de business</a>
-          <a href="/strategie-marketing">Strategie de dezvoltare</a>
-          <a href="/site-uri">Website-uri &amp; sisteme</a>
-          <a href="/automatizari">Automatizări &amp; tools</a>
-          <a href="/strategie-marketing">Campanii Ads</a>
-          <a href="https://posty.app" target="_blank" rel="noopener">Social media AI · Posty ↗</a>
-          <a href="/#ecosystem" data-pillar="6">Email marketing AI</a>
-          <p class="note">Posty — recomandare partener, nu serviciu AiPixxel</p>
-        </div>
-      </li>
-      <li><a href="/despre">Despre</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
+<header>
+  <a href="/" class="logo">AiPixxel<small>Consulting</small></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Meniu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" class="active">Acasă</a></li>
+    <li class="has-dropdown" id="servicesDropdown">
+      <button type="button">Servicii</button>
+      <div class="dropdown">
+        <a href="/" data-pillar="0">Analiză de business</a>
+        <a href="/strategie-marketing">Strategie de dezvoltare</a>
+        <a href="/site-uri">Website-uri &amp; sisteme</a>
+        <a href="/automatizari">Automatizări &amp; tools</a>
+        <a href="/strategie-marketing">Campanii Ads</a>
+        <a href="https://posty.app" target="_blank" rel="noopener">Social media AI · Posty ↗</a>
+        <a href="/" data-pillar="6">Email marketing AI</a>
+        <p class="note">Posty — recomandare partener</p>
+      </div>
+    </li>
+    <li><a href="/despre">Despre</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</header>
+
+<main>
+  <div class="ecosystem-stage" id="ecosystemStage">
+    <svg class="cables-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#C9A461" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <g id="cablesGroup"></g>
+    </svg>
+
+    <div class="morph-frame" id="morphFrame">
+      <canvas id="morphCanvas"></canvas>
+    </div>
+
+    <div id="pillarNodes"></div>
   </div>
-</nav>
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <p class="hero-eyebrow">Consultant marketing &amp; business · România</p>
-      <h1>Orice afacere poate avea <em>succes.</em></h1>
-      <p class="hero-lead">Creștere haotică, decizii pe intuiție, agenții care nu vorbesc între ele — nu e strategie, e fragmentare. Construim un sistem care leagă analiza de execuție.</p>
-      <div class="hero-actions">
-        <a href="/contact" class="btn btn-primary">Audit gratuit →</a>
-        <a href="#ecosystem" class="btn btn-outline">Vezi sistemul</a>
-      </div>
-      <p class="hero-meta">Target: companii mari &amp; medii · deschiși și la SMB-uri serioase</p>
-    </div>
-    <div aria-hidden="true"></div>
-  </div>
-</section>
-
-<section class="ecosystem" id="ecosystem">
-  <div class="container">
-    <p class="section-label">Ecosistem integrat</p>
-    <h2 class="section-title">7 piloni. Un singur sistem.</h2>
-    <p class="section-sub">Nu vindem servicii izolate — conectăm analiza, strategia și execuția într-un flux continuu de date și decizii.</p>
-
-    <div class="ecosystem-stage" id="ecosystemStage">
-      <svg class="cables-svg" id="cablesSvg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#C9A461" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.8"/>
-          </linearGradient>
-        </defs>
-        <g id="cablesGroup"></g>
-      </svg>
-
-      <div class="morph-frame" id="morphFrame">
-        <canvas id="morphCanvas"></canvas>
-      </div>
-
-      <div id="pillarNodes"></div>
-    </div>
-
-    <div class="pillar-mobile" id="pillarMobile">
-      <div class="pillar-mobile-line" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
-
-<section class="story-section">
-  <div class="container story-grid">
-    <div>
-      <p class="story-tag">Tensiune</p>
-      <h2>De ce stagnează companiile care „fac marketing"?</h2>
-      <p>Nu pentru că nu investesc. Ci pentru că nimeni nu vede tot ecosistemul — doar bucăți.</p>
-      <ul class="pain-list">
-        <li>Decizii pe intuiție, fără date despre ce declanșează cumpărarea</li>
-        <li>Agenții diferite, fiecare cu propria viziune, zero aliniere</li>
-        <li>Bugete fragmentate între canale care nu comunică</li>
-        <li>Nimeni nu măsoară potențialul real de scalare</li>
-      </ul>
-    </div>
-    <div class="reveal-cards">
-      <div class="reveal-card">
-        <h3>Fără profil de client</h3>
-        <p>Nu știi cât cheltuie, când cumpără și care e plafonul real al pieței tale.</p>
-      </div>
-      <div class="reveal-card">
-        <h3>Fără manual de implementare</h3>
-        <p>Strategii frumoase pe PowerPoint, zero execuție conectată la achiziție și fidelizare.</p>
-      </div>
-      <div class="reveal-card">
-        <h3>Fără sistem</h3>
-        <p>Postezi, rulezi ads, trimiți email — dar nu curge nimic între ele.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="story-section alt">
-  <div class="container story-grid reverse">
-    <div>
-      <p class="story-tag">Reveal</p>
-      <h2>AiPixxel leagă analiza de execuția reală.</h2>
-      <p>Suntem consultanți de business și marketing — nu producăm foto/video. Intermediem cu colaboratori de execuție, dar tu ai un singur partener care vede tot tabloul.</p>
-      <p>Construim sistemul: de la profilul clientului, la ads, automatizări, email personalizat și prezență socială. Nu „postăm" — orchestrăm.</p>
-    </div>
-    <div class="reveal-cards">
-      <div class="reveal-card">
-        <h3>Analiză → Strategie</h3>
-        <p>Profil client, triggeri de cumpărare, potențial de scalare — apoi plan pe termen mediu/lung.</p>
-      </div>
-      <div class="reveal-card">
-        <h3>Strategie → Execuție</h3>
-        <p>Site-uri, baze de date, agenți AI, dashboard-uri, campanii ads — tot conectat.</p>
-      </div>
-      <div class="reveal-card">
-        <h3>Execuție → Retenție</h3>
-        <p>Email marketing AI personalizat per client. Social prin <a href="https://posty.app" target="_blank" rel="noopener" style="color:var(--violet)">Posty</a> — recomandare partener.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="story-section">
-  <div class="container">
-    <p class="story-tag" style="text-align:center">Dovadă</p>
-    <h2 class="section-title">Rezultate care vorbesc.</h2>
-    <p class="section-sub">Placeholder — conținut real în curând.</p>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="proof-value">—</div>
-        <div class="proof-label">Clienți activi</div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-value">—</div>
-        <div class="proof-label">ROI mediu campanii</div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-value">—</div>
-        <div class="proof-label">Sisteme implementate</div>
-      </div>
-    </div>
-    <div class="testimonial">
-      <blockquote>„Testimonial client — în curând."</blockquote>
-      <cite>— Nume companie, industrie</cite>
-    </div>
-  </div>
-</section>
-
-<section class="cta-final">
-  <div class="container">
-    <h2>Primul pas: un audit gratuit.</h2>
-    <p>30 de minute. Zero pitch agresiv. Doar o analiză sinceră a ecosistemului tău de marketing și business.</p>
-    <a href="/contact" class="btn btn-primary">Programează consultanța →</a>
-  </div>
-</section>
+  <div class="pillar-mobile-line" aria-hidden="true"></div>
+  <div class="pillar-mobile" id="pillarMobile"></div>
+</main>
 
 <footer>
-  <div class="container footer-inner">
-    <span>© 2026 AiPixxel · București, România</span>
-    <span><a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a></span>
-  </div>
+  <span>© 2026 AiPixxel · București</span>
+  <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
 </footer>
 
 <script>
 (function() {
-  /* ── PILLAR DATA ── */
   var PILLARS = [
-    { num: '01', title: 'Cum aduci un client', desc: 'Profil client, ce declanșează cumpărarea, cât și când cheltuie — plus potențialul și plafonul real de scalare.' },
+    { num: '01', title: 'Cum aduci un client', desc: 'Profil client, triggeri de cumpărare, cât și când cheltuie — plus potențialul real de scalare.' },
     { num: '02', title: 'Planul de creștere', desc: 'Strategie sustenabilă pe termen mediu/lung, cu manual de implementare pentru achiziție și fidelizare.' },
-    { num: '03', title: 'Infrastructura digitală', desc: 'Website-uri profesionale și sisteme cu baze de date — fundația pe care rulează tot restul.' },
-    { num: '04', title: 'Sisteme interne', desc: 'Automatizări, agenți de suport, softuri, dashboard-uri și aplicații mobile care elimină munca repetitivă.' },
+    { num: '03', title: 'Infrastructura digitală', desc: 'Website-uri și sisteme cu baze de date — fundația pe care rulează tot restul.' },
+    { num: '04', title: 'Sisteme interne', desc: 'Automatizări, agenți de suport, dashboard-uri și aplicații mobile.' },
     { num: '05', title: 'Achiziție plătită', desc: 'Campanii Ads social media optimizate pe date — nu pe presupuneri.' },
-    { num: '06', title: 'Prezență socială', desc: 'Social media management AI. Recomandăm Posty — partener, nu serviciu propriu AiPixxel.' },
-    { num: '07', title: 'Fidelizare inteligentă', desc: 'Email marketing AI cu analiză și personalizare per client — mesajul potrivit, la momentul potrivit.' }
+    { num: '06', title: 'Prezență socială', desc: 'Social media management AI. Recomandăm Posty — partener, nu serviciu AiPixxel.' },
+    { num: '07', title: 'Fidelizare inteligentă', desc: 'Email marketing AI cu analiză și personalizare per client.' }
   ];
 
   var SHAPE_FILES = [
-    'icons/01-factory.png',
-    'icons/03-car.png',
-    'icons/04-dining.png',
-    'icons/06-store.png',
-    'icons/07-house.png',
-    'icons/08-code.png',
-    'icons/09-finance.png',
-    'icons/05-coffee.png',
-    'icons/02-tools.png',
+    'icons/01-factory.png', 'icons/03-car.png', 'icons/04-dining.png',
+    'icons/06-store.png', 'icons/07-house.png', 'icons/08-code.png',
+    'icons/09-finance.png', 'icons/05-coffee.png', 'icons/02-tools.png',
     'icons/10-fitness.png'
   ];
 
@@ -685,76 +386,52 @@
   var HOLD_MS = 1900;
   var GOLD = [201, 164, 97];
   var VIOLET = [139, 92, 246];
+  var CX = 500, CY = 500, FRAME_R = 195, NODE_R = 420;
 
-  /* ── NAV ── */
-  var nav = document.getElementById('nav');
-  var navToggle = document.getElementById('navToggle');
-  var servicesDropdown = document.getElementById('servicesDropdown');
-
-  navToggle.addEventListener('click', function() {
-    nav.classList.toggle('open');
+  /* Nav */
+  document.getElementById('navToggle').addEventListener('click', function() {
+    document.body.classList.toggle('menu-open');
   });
-
-  servicesDropdown.querySelector('button').addEventListener('click', function(e) {
+  document.getElementById('servicesDropdown').querySelector('button').addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
       e.preventDefault();
-      servicesDropdown.classList.toggle('open');
+      document.getElementById('servicesDropdown').classList.toggle('open');
     }
   });
-
   document.querySelectorAll('.dropdown a[data-pillar]').forEach(function(a) {
     a.addEventListener('click', function(e) {
-      var idx = parseInt(a.getAttribute('data-pillar'), 10);
-      var onHome = location.pathname === '/' || location.pathname.endsWith('/index.html');
-      if (onHome) {
-        e.preventDefault();
-        expandPillar(idx);
-        document.getElementById('ecosystem').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      nav.classList.remove('open');
-      servicesDropdown.classList.remove('open');
+      e.preventDefault();
+      expandPillar(parseInt(a.getAttribute('data-pillar'), 10));
+      document.body.classList.remove('menu-open');
     });
   });
 
-  if (location.hash === '#ecosystem') {
-    var pillarMatch = location.search.match(/pillar=(\d)/);
-    if (pillarMatch) expandPillar(parseInt(pillarMatch[1], 10));
-  }
-
-  /* ── BUILD PILLAR NODES (desktop) ── */
-  var pillarNodesEl = document.getElementById('pillarNodes');
+  /* Pillars desktop */
   var cablesGroup = document.getElementById('cablesGroup');
-  var stageEl = document.getElementById('ecosystemStage');
-  var CX = 500, CY = 500, FRAME_R = 165, NODE_R = 355;
+  var pillarNodesEl = document.getElementById('pillarNodes');
 
   PILLARS.forEach(function(p, i) {
     var angle = (-Math.PI / 2) + (i * 2 * Math.PI / 7);
     var nx = CX + Math.cos(angle) * NODE_R;
     var ny = CY + Math.sin(angle) * NODE_R;
-    var ex = CX + Math.cos(angle) * (FRAME_R + 8);
-    var ey = CY + Math.sin(angle) * (FRAME_R + 8);
-    var cpx = CX + Math.cos(angle) * (FRAME_R + NODE_R) * 0.45;
-    var cpy = CY + Math.sin(angle) * (FRAME_R + NODE_R) * 0.45;
-
-    var pathId = 'cable-' + i;
+    var ex = CX + Math.cos(angle) * (FRAME_R + 6);
+    var ey = CY + Math.sin(angle) * (FRAME_R + 6);
+    var cpx = CX + Math.cos(angle) * (FRAME_R + NODE_R) * 0.42;
+    var cpy = CY + Math.sin(angle) * (FRAME_R + NODE_R) * 0.42;
     var d = 'M' + ex + ',' + ey + ' Q' + cpx + ',' + cpy + ' ' + nx + ',' + ny;
 
-    var pathBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    pathBg.setAttribute('d', d);
-    pathBg.setAttribute('class', 'cable-path');
-    cablesGroup.appendChild(pathBg);
-
-    var pathGlow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    pathGlow.setAttribute('d', d);
-    pathGlow.setAttribute('class', 'cable-glow');
-    pathGlow.setAttribute('id', pathId);
-    cablesGroup.appendChild(pathGlow);
+    ['cable-path', 'cable-glow'].forEach(function(cls) {
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      cablesGroup.appendChild(path);
+    });
 
     var pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     pulse.setAttribute('r', '3');
     pulse.setAttribute('class', 'cable-pulse');
     var anim = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-    anim.setAttribute('dur', (2.2 + i * 0.15) + 's');
+    anim.setAttribute('dur', (2 + i * 0.12) + 's');
     anim.setAttribute('repeatCount', 'indefinite');
     anim.setAttribute('path', d);
     pulse.appendChild(anim);
@@ -773,13 +450,13 @@
     }
   });
 
-  /* ── MOBILE PILLARS ── */
+  /* Pillars mobile */
   var pillarMobile = document.getElementById('pillarMobile');
   PILLARS.forEach(function(p, i) {
     var item = document.createElement('div');
     item.className = 'pillar-mobile-item';
     item.setAttribute('data-index', i);
-    item.innerHTML = '<button class="pillar-mobile-btn" aria-expanded="false"><div class="pillar-num">' + p.num + '</div><div class="pillar-title">' + p.title + '</div></button><div class="pillar-mobile-desc">' + p.desc + '</div>';
+    item.innerHTML = '<button class="pillar-mobile-btn" type="button"><div class="pillar-num">' + p.num + '</div><div class="pillar-title">' + p.title + '</div></button><div class="pillar-mobile-desc">' + p.desc + '</div>';
     pillarMobile.appendChild(item);
     item.querySelector('button').addEventListener('click', function() { togglePillar(i); });
   });
@@ -791,36 +468,29 @@
     });
     document.querySelectorAll('.pillar-mobile-item').forEach(function(item) {
       var match = parseInt(item.getAttribute('data-index'), 10) === idx;
-      var next = match ? !item.classList.contains('open') : false;
-      item.classList.toggle('open', next);
-      item.querySelector('button').setAttribute('aria-expanded', next ? 'true' : 'false');
+      item.classList.toggle('open', match ? !item.classList.contains('open') : false);
     });
   }
 
   function expandPillar(idx) {
+    document.querySelectorAll('.pillar-node, .pillar-mobile-item').forEach(function(el) {
+      el.classList.remove('expanded', 'open');
+    });
     var node = document.querySelector('.pillar-node[data-index="' + idx + '"]');
-    if (node) { node.classList.add('expanded'); node.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    if (node) node.classList.add('expanded');
     var m = document.querySelector('.pillar-mobile-item[data-index="' + idx + '"]');
-    if (m) { m.classList.add('open'); m.querySelector('button').setAttribute('aria-expanded', 'true'); }
+    if (m) m.classList.add('open');
   }
 
-  /* ── PARTICLE MORPH ── */
+  /* Particle morph */
   var canvas = document.getElementById('morphCanvas');
   var ctx = canvas.getContext('2d');
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var shapes = [];
-  var current = [];
-  var fromShape = [];
-  var toShape = [];
-  var shapeIdx = 0;
-  var morphT = 1;
-  var phase = 'hold';
-  var phaseStart = 0;
-  var breathPhase = 0;
+  var shapes = [], fromShape = [], toShape = [];
+  var shapeIdx = 0, morphT = 1, phase = 'hold', phaseStart = 0, breathPhase = 0;
 
   function resizeCanvas() {
-    var frame = document.getElementById('morphFrame');
-    var size = frame.offsetWidth;
+    var size = document.getElementById('morphFrame').offsetWidth;
     canvas.width = size * dpr;
     canvas.height = size * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -840,23 +510,19 @@
     for (var y = 0; y < h; y += step) {
       for (var x = 0; x < w; x += step) {
         var i = (y * w + x) * 4;
-        var r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
-        var lum = 0.299 * r + 0.587 * g + 0.114 * b;
-        if (a > 25 && lum > threshold) {
-          pts.push({
-            x: (x / w - 0.5) * 1.55,
-            y: (y / h - 0.5) * 1.55
-          });
+        var lum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+        if (data[i + 3] > 25 && lum > threshold) {
+          pts.push({ x: (x / w - 0.5) * 1.55, y: (y / h - 0.5) * 1.55 });
         }
       }
     }
     for (var j = pts.length - 1; j > 0; j--) {
       var k = Math.floor(Math.random() * (j + 1));
-      var tmp = pts[j]; pts[j] = pts[k]; pts[k] = tmp;
+      var t = pts[j]; pts[j] = pts[k]; pts[k] = t;
     }
     while (pts.length < count) {
-      var src = pts[Math.floor(Math.random() * pts.length)] || { x: 0, y: 0 };
-      pts.push({ x: src.x + (Math.random() - 0.5) * 0.025, y: src.y + (Math.random() - 0.5) * 0.025 });
+      var s = pts[Math.floor(Math.random() * Math.max(pts.length, 1))] || { x: 0, y: 0 };
+      pts.push({ x: s.x + (Math.random() - 0.5) * 0.025, y: s.y + (Math.random() - 0.5) * 0.025 });
     }
     return pts.slice(0, count);
   }
@@ -873,22 +539,17 @@
       Math.round(GOLD[2] + (VIOLET[2] - GOLD[2]) * t) + ')';
   }
 
-  function loadShapes(callback) {
+  function loadShapes(cb) {
     var loaded = 0;
     SHAPE_FILES.forEach(function(src, idx) {
       var img = new Image();
-      img.onload = function() {
-        shapes[idx] = extractPoints(img, PARTICLE_COUNT);
-        loaded++;
-        if (loaded === SHAPE_FILES.length) callback();
-      };
+      img.onload = function() { shapes[idx] = extractPoints(img, PARTICLE_COUNT); if (++loaded === SHAPE_FILES.length) cb(); };
       img.onerror = function() {
-        shapes[idx] = extractPoints(img, PARTICLE_COUNT) || Array.from({ length: PARTICLE_COUNT }, function(_, i) {
-          var a = (i / PARTICLE_COUNT) * Math.PI * 2;
+        shapes[idx] = Array.from({ length: PARTICLE_COUNT }, function(_, n) {
+          var a = (n / PARTICLE_COUNT) * Math.PI * 2;
           return { x: Math.cos(a) * 0.4, y: Math.sin(a) * 0.4 };
         });
-        loaded++;
-        if (loaded === SHAPE_FILES.length) callback();
+        if (++loaded === SHAPE_FILES.length) cb();
       };
       img.src = src;
     });
@@ -898,47 +559,34 @@
     fromShape = shapes[shapeIdx];
     shapeIdx = (shapeIdx + 1) % shapes.length;
     toShape = shapes[shapeIdx];
-    morphT = 0;
-    phase = 'morph';
-    phaseStart = performance.now();
+    morphT = 0; phase = 'morph'; phaseStart = performance.now();
   }
 
   function draw(now) {
-    if (!current.length) { requestAnimationFrame(draw); return; }
-
-    var w = canvas.width / dpr;
-    var h = canvas.height / dpr;
+    if (!fromShape.length) { requestAnimationFrame(draw); return; }
+    var w = canvas.width / dpr, h = canvas.height / dpr;
     ctx.clearRect(0, 0, w, h);
 
     if (phase === 'hold' && now - phaseStart > HOLD_MS) startMorph();
     if (phase === 'morph') {
       morphT = Math.min(1, (now - phaseStart) / MORPH_MS);
-      if (morphT >= 1) {
-        phase = 'hold';
-        phaseStart = now;
-        morphT = 1;
-        fromShape = toShape;
-      }
+      if (morphT >= 1) { phase = 'hold'; phaseStart = now; fromShape = toShape; }
     }
 
     var ease = phase === 'morph' ? cubicInOut(morphT) : 1;
     breathPhase += 0.018;
-    var breath = 1 + Math.sin(breathPhase) * 0.035;
+    var scale = Math.min(w, h) * 0.38 * (1 + Math.sin(breathPhase) * 0.035);
     var cx = w / 2, cy = h / 2;
-    var scale = Math.min(w, h) * 0.38 * breath;
 
     for (var i = 0; i < PARTICLE_COUNT; i++) {
       var fp = fromShape[i] || { x: 0, y: 0 };
       var tp = toShape[i] || fp;
       var src = phase === 'hold' ? fp : { x: fp.x + (tp.x - fp.x) * ease, y: fp.y + (tp.y - fp.y) * ease };
-      var px = cx + src.x * scale;
-      var py = cy + src.y * scale;
-      var size = 1.1 + (i % 3) * 0.3;
       ctx.beginPath();
       ctx.fillStyle = lerpColor(i, PARTICLE_COUNT);
       ctx.shadowBlur = 4;
       ctx.shadowColor = lerpColor(i, PARTICLE_COUNT);
-      ctx.arc(px, py, size, 0, Math.PI * 2);
+      ctx.arc(cx + src.x * scale, cy + src.y * scale, 1.1 + (i % 3) * 0.3, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.shadowBlur = 0;
@@ -947,10 +595,8 @@
 
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
-
   loadShapes(function() {
     fromShape = shapes[0];
-    current = shapes[0];
     toShape = shapes[1];
     phase = 'hold';
     phaseStart = performance.now();
