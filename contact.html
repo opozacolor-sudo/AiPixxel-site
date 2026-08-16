@@ -9,144 +9,355 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<style>
+  :root {
+    --ink: #0A0A0B;
+    --ink-2: #1C1C1F;
+    --gold: #C9A461;
+    --gold-dark: #a9854e;
+    --cream: #F5F2EB;
+    --violet: #8B5CF6;
+    --muted: #6b6558;
+    --line: rgba(10,10,11,0.12);
+    --bg: #F4F3EF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    display: flex; flex-direction: column;
+  }
+
+  header.nav {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(12px, 2vh, 18px) clamp(16px, 4vw, 48px);
+    background: rgba(244,243,239,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-size: clamp(13px, 1.6vw, 15px); font-weight: 800;
+    letter-spacing: .5px; text-decoration: none; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .logo span { color: var(--gold-dark); }
+  nav.links {
+    display: flex; align-items: center; gap: clamp(10px, 2vw, 24px);
+  }
+  nav.links > a {
+    color: var(--ink); text-decoration: none; opacity: .55;
+    font-size: clamp(11px, 1.2vw, 13px); font-weight: 600;
+    line-height: 1; display: inline-flex; align-items: center;
+    transition: opacity .2s, color .2s;
+  }
+  nav.links > a:hover, nav.links > a.active { opacity: 1; color: var(--ink); }
+
+  .nav-drop { position: relative; display: inline-flex; align-items: center; }
+  .nav-drop > button {
+    background: none; border: none; cursor: pointer; font: inherit;
+    font-size: clamp(11px, 1.2vw, 13px); font-weight: 600;
+    color: var(--ink); opacity: .55; padding: 0; line-height: 1;
+    display: inline-flex; align-items: center; transition: opacity .2s;
+  }
+  .nav-drop > button:hover, .nav-drop.open > button { opacity: 1; }
+  .nav-drop > button::after {
+    content: ""; display: inline-block; width: 0; height: 0; margin-left: 5px;
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-top: 5px solid currentColor; vertical-align: middle; opacity: .6;
+  }
+  .drop-menu {
+    position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    min-width: 240px; background: var(--ink); border-radius: 10px; padding: 8px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.28);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .2s, visibility .2s; z-index: 100;
+  }
+  .nav-drop:hover .drop-menu, .nav-drop.open .drop-menu {
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
+  .drop-menu a {
+    display: block; padding: 10px 12px; border-radius: 7px;
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    color: var(--cream); opacity: 1; line-height: 1.35;
+    transition: background .15s;
+  }
+  .drop-menu a:hover { background: rgba(201,164,97,.16); }
+  .drop-menu a small {
+    display: block; font-size: 10px; font-weight: 600; letter-spacing: .8px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 2px;
+  }
+
+  a.nav-contact {
+    opacity: 1 !important;
+    padding: clamp(7px, 1vh, 9px) clamp(12px, 1.6vw, 16px);
+    border-radius: 999px; background: var(--ink); color: var(--cream) !important;
+    font-size: clamp(10px, 1.1vw, 12px);
+    transition: background .2s, transform .2s;
+  }
+  a.nav-contact:hover { background: var(--ink-2); transform: translateY(-1px); }
+  a.nav-contact.active { background: var(--gold-dark); color: var(--ink) !important; }
+
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: clamp(40px, 8vh, 72px) clamp(20px, 4vw, 48px);
+  }
+
+  .contact-left {
+    padding-right: clamp(24px, 5vw, 60px);
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--line);
+  }
+  .contact-tag {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-dark); font-weight: 700; margin-bottom: 20px;
+  }
+  .contact-title {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .contact-title span { color: var(--gold-dark); font-style: italic; }
+  .contact-desc {
+    color: var(--muted); font-size: 15px; line-height: 1.65;
+    max-width: 38ch; margin-bottom: 40px;
+  }
+  .contact-direct { display: flex; flex-direction: column; gap: 12px; }
+  .contact-direct a {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink); text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: color .2s;
+  }
+  .contact-direct a:hover { color: var(--gold-dark); }
+  .contact-direct .icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--line); background: rgba(255,255,255,.5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: border-color .2s, background .2s;
+  }
+  .contact-direct a:hover .icon {
+    border-color: var(--gold); background: var(--gold); color: var(--ink);
+  }
+
+  .contact-right { padding-left: clamp(24px, 5vw, 60px); }
+  .form-title {
+    font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 700;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--ink);
+    transition: border-color .2s; outline: none;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select { cursor: pointer; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .btn-submit {
+    width: 100%; padding: 16px;
+    background: var(--ink); color: var(--cream);
+    border: none; border-radius: 999px;
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: .2px;
+    cursor: pointer; transition: background .2s, transform .15s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--ink-2); transform: translateY(-2px); }
+  .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+  .success-msg {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: rgba(201,164,97,.2); color: var(--ink);
+    border: 1px solid rgba(201,164,97,.35);
+    border-radius: 8px; font-size: 13px; font-weight: 600;
+    text-align: center;
+  }
+
+  footer.site-footer {
+    padding: clamp(10px, 1.6vh, 14px) clamp(16px, 4vw, 48px);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--muted);
+    border-top: 1px solid var(--line);
+    background: var(--ink); color: rgba(245,242,235,.7);
+  }
+  footer.site-footer a { color: rgba(245,242,235,.7); text-decoration: none; }
+  footer.site-footer a:hover { color: var(--gold); }
+  .footer-brand { font-weight: 700; color: var(--cream); }
+  .footer-brand span { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .drop-menu {
+      left: auto; right: 0; transform: none;
+      min-width: min(280px, calc(100vw - 32px));
+    }
+    main { grid-template-columns: 1fr; padding: 32px 5vw; gap: 40px; }
+    .contact-left {
+      padding-right: 0; border-right: none;
+      border-bottom: 1px solid var(--line); padding-bottom: 32px;
+    }
+    .contact-right { padding-left: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    footer.site-footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-<div class="page">
 
-  <header class="nav">
-    <a href="/" class="logo">Ai<span>Pixxel</span></a>
-    <nav class="links">
-      <a href="/">Acasă</a>
-      <div class="nav-drop" id="navDrop">
-        <button type="button">Servicii</button>
-        <div class="drop-menu">
-          <a href="/servicii/analiza-de-business"><small>01</small>Analiză de business</a>
-          <a href="/servicii/strategie-de-dezvoltare"><small>02</small>Strategie de dezvoltare</a>
-          <a href="/servicii/website-uri-sisteme"><small>03</small>Website-uri &amp; sisteme</a>
-          <a href="/servicii/automatizari-tools"><small>04</small>Automatizări &amp; tools</a>
-          <a href="/servicii/campanii-ads"><small>05</small>Campanii Ads</a>
-          <a href="/servicii/social-media-ai"><small>06</small>Social media AI</a>
-          <a href="/servicii/email-marketing-ai"><small>07</small>Email marketing AI</a>
-        </div>
-      </div>
-      <a href="/despre">Despre</a>
-      <a href="/contact" class="nav-contact active">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="contact-layout">
-      <div class="contact-intro">
-        <p class="contact-eyebrow">Contact</p>
-        <h1>Primul apel e <em>gratis.</em></h1>
-        <p>Descrie-ne situația afacerii tale și îți răspundem în mai puțin de 24 de ore. Fără presiune, fără contract semnat pe loc.</p>
-        <div class="contact-links">
-          <a href="mailto:contact@aipixxel.online">
-            <span class="icon">✉</span>
-            contact@aipixxel.online
-          </a>
-          <a href="https://wa.me/40787645458" target="_blank" rel="noopener">
-            <span class="icon">💬</span>
-            WhatsApp
-          </a>
-          <a href="https://instagram.com/aipixxel" target="_blank" rel="noopener">
-            <span class="icon">◎</span>
-            @aipixxel
-          </a>
-        </div>
-      </div>
-
-      <div class="contact-form-wrap">
-        <h2>Spune-ne despre proiectul tău</h2>
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nume">Nume *</label>
-              <input type="text" id="nume" name="nume" placeholder="Ion Popescu" required>
-            </div>
-            <div class="form-group">
-              <label for="functie">Funcție</label>
-              <input type="text" id="functie" name="functie" placeholder="CEO, Manager...">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firma">Nume firmă</label>
-              <input type="text" id="firma" name="firma" placeholder="Compania SRL">
-            </div>
-            <div class="form-group">
-              <label for="contact">Contact (email/telefon) *</label>
-              <input type="text" id="contact" name="contact" placeholder="email sau telefon" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="serviciu">Ce fel de ajutor dorești? *</label>
-            <select id="serviciu" name="serviciu" required>
-              <option value="" disabled selected>Alege un serviciu</option>
-              <option>Analiză de business</option>
-              <option>Strategie de dezvoltare sustenabilă</option>
-              <option>Website-uri &amp; sisteme</option>
-              <option>Automatizări &amp; tools interne</option>
-              <option>Campanii Ads social media</option>
-              <option>Social media management AI</option>
-              <option>Email marketing AI</option>
-              <option>Mai multe servicii</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="descriere">Descrie proiectul</label>
-            <textarea id="descriere" name="descriere" placeholder="Cu cât ne spui mai mult despre afacerea ta, cu atât răspunsul va fi mai util..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit">Trimite mesajul</button>
-          <div class="success-msg" id="successMsg">Mesaj trimis. Îți răspundem în 24 de ore.</div>
-        </form>
+<header class="nav">
+  <a href="/" class="logo">Ai<span>Pixxel</span></a>
+  <nav class="links">
+    <a href="/">Acasă</a>
+    <div class="nav-drop" id="navDrop">
+      <button type="button">Servicii</button>
+      <div class="drop-menu">
+        <a href="/servicii/analiza-de-business"><small>01</small>Analiză de business</a>
+        <a href="/servicii/strategie-de-dezvoltare"><small>02</small>Strategie de dezvoltare</a>
+        <a href="/servicii/website-uri-sisteme"><small>03</small>Website-uri &amp; sisteme</a>
+        <a href="/servicii/automatizari-tools"><small>04</small>Automatizări &amp; tools</a>
+        <a href="/servicii/campanii-ads"><small>05</small>Campanii Ads</a>
+        <a href="/servicii/social-media-ai"><small>06</small>Social media AI</a>
+        <a href="/servicii/email-marketing-ai"><small>07</small>Email marketing AI</a>
       </div>
     </div>
-  </main>
+    <a href="/despre">Despre</a>
+    <a href="/contact" class="nav-contact active">Contact</a>
+  </nav>
+</header>
 
-  <footer class="site-footer">
-    <div class="footer-brand">Ai<span>Pixxel</span></div>
-    <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
-  </footer>
+<main>
+  <div class="contact-left">
+    <div class="contact-tag">Contact</div>
+    <h1 class="contact-title">Primul apel<br>e <span>gratis.</span></h1>
+    <p class="contact-desc">Descrie-ne situația afacerii tale și îți răspundem în mai puțin de 24 de ore. Fără presiune, fără contract semnat pe loc.</p>
+    <div class="contact-direct">
+      <a href="mailto:contact@aipixxel.online">
+        <div class="icon">✉</div>
+        contact@aipixxel.online
+      </a>
+      <a href="https://wa.me/40787645458" target="_blank" rel="noopener">
+        <div class="icon">💬</div>
+        WhatsApp
+      </a>
+      <a href="https://instagram.com/aipixxel" target="_blank" rel="noopener">
+        <div class="icon">◎</div>
+        @aipixxel
+      </a>
+    </div>
+  </div>
 
-</div>
+  <div class="contact-right">
+    <div class="form-title">Spune-ne despre proiectul tău</div>
+    <form id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nume *</label>
+          <input type="text" name="nume" placeholder="Ion Popescu" required>
+        </div>
+        <div class="form-group">
+          <label>Funcție</label>
+          <input type="text" name="functie" placeholder="CEO, Manager...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nume firmă</label>
+          <input type="text" name="firma" placeholder="Compania SRL">
+        </div>
+        <div class="form-group">
+          <label>Contact (email/telefon) *</label>
+          <input type="text" name="contact" placeholder="email sau telefon" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ce fel de ajutor dorești? *</label>
+        <select name="serviciu" required>
+          <option value="" disabled selected>Alege un serviciu</option>
+          <option>Analiză de business</option>
+          <option>Strategie de dezvoltare sustenabilă</option>
+          <option>Website-uri &amp; sisteme</option>
+          <option>Automatizări &amp; tools interne</option>
+          <option>Campanii Ads social media</option>
+          <option>Social media management AI</option>
+          <option>Email marketing AI</option>
+          <option>Mai multe servicii</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Descrie proiectul</label>
+        <textarea name="descriere" placeholder="Spune-ne mai multe despre ce ai în minte — cu cât mai multe detalii, cu atât mai bine..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Trimite mesajul →</button>
+      <div class="success-msg" id="successMsg">✓ Mesaj trimis! Îți răspundem în 24 de ore.</div>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">Ai<span>Pixxel</span></div>
+  <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
+</footer>
 
 <script src="/assets/nav.js"></script>
 <script>
-emailjs.init("m21VT0DNttjp_iv0X");
+  emailjs.init("m21VT0DNttjp_iv0X");
 
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  var btn = this.querySelector(".btn-submit");
-  btn.textContent = "Se trimite...";
-  btn.disabled = true;
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = this.querySelector(".btn-submit");
+    btn.textContent = "Se trimite...";
+    btn.disabled = true;
 
-  var params = {
-    nume: this.querySelector('[name="nume"]').value,
-    functie: this.querySelector('[name="functie"]').value,
-    firma: this.querySelector('[name="firma"]').value,
-    contact: this.querySelector('[name="contact"]').value,
-    serviciu: this.querySelector('[name="serviciu"]').value,
-    descriere: this.querySelector('[name="descriere"]').value
-  };
+    var params = {
+      nume: this.querySelector('[name="nume"]').value,
+      functie: this.querySelector('[name="functie"]').value,
+      firma: this.querySelector('[name="firma"]').value,
+      contact: this.querySelector('[name="contact"]').value,
+      serviciu: this.querySelector('[name="serviciu"]').value,
+      descriere: this.querySelector('[name="descriere"]').value
+    };
 
-  emailjs.send("service_rihrr78", "template_8lex3sg", params)
-    .then(function() {
-      document.getElementById("successMsg").style.display = "block";
-      document.getElementById("contactForm").reset();
-      btn.textContent = "Trimite mesajul";
-      btn.disabled = false;
-      setTimeout(function() {
-        document.getElementById("successMsg").style.display = "none";
-      }, 5000);
-    }, function() {
-      alert("Eroare la trimitere. Scrie direct la contact@aipixxel.online");
-      btn.textContent = "Trimite mesajul";
-      btn.disabled = false;
-    });
-});
+    emailjs.send("service_rihrr78", "template_8lex3sg", params)
+      .then(function() {
+        document.getElementById("successMsg").style.display = "block";
+        document.getElementById("contactForm").reset();
+        btn.textContent = "Trimite mesajul →";
+        btn.disabled = false;
+        setTimeout(function() {
+          document.getElementById("successMsg").style.display = "none";
+        }, 5000);
+      }, function() {
+        alert("Eroare la trimitere. Încearcă din nou sau scrie direct la contact@aipixxel.online");
+        btn.textContent = "Trimite mesajul →";
+        btn.disabled = false;
+      });
+  });
 </script>
 </body>
 </html>
