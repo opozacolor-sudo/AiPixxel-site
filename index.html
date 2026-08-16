@@ -56,19 +56,20 @@
     color:var(--ink); text-decoration:none; text-transform:uppercase;
   }
   .logo span{ color:var(--gold-dark); }
-  nav.links{ display:flex; gap:clamp(10px,2vw,24px); }
-  nav.links a{
+  nav.links{ display:flex; align-items:center; gap:clamp(10px,2vw,24px); }
+  nav.links > a{
     color:var(--ink); opacity:.5; text-decoration:none;
     font-size:clamp(11px,1.2vw,13px); font-weight:600;
-    transition:opacity .2s;
+    transition:opacity .2s; line-height:1; display:inline-flex; align-items:center;
   }
-  nav.links a:hover, nav.links a.active{ opacity:1; }
+  nav.links > a:hover, nav.links > a.active{ opacity:1; }
 
-  .nav-drop{ position:relative; }
+  .nav-drop{ position:relative; display:inline-flex; align-items:center; }
   .nav-drop>button{
     background:none; border:none; cursor:pointer;
     font:inherit; font-size:clamp(11px,1.2vw,13px); font-weight:600;
     color:var(--ink); opacity:.5; padding:0; transition:opacity .2s;
+    line-height:1; display:inline-flex; align-items:center;
   }
   .nav-drop>button:hover, .nav-drop.open>button{ opacity:1; }
   .nav-drop>button::after{
@@ -89,7 +90,7 @@
   .drop-menu a{
     display:block; padding:10px 12px; border-radius:7px;
     text-decoration:none; font-size:13px; font-weight:500;
-    color:rgba(245,242,235,.82); line-height:1.35;
+    color:var(--cream); opacity:1; line-height:1.35;
     transition:background .15s, color .15s;
   }
   .drop-menu a:hover{
