@@ -66,13 +66,6 @@
     transition:opacity .2s;
   }
   nav.links a:hover, nav.links a.active{ opacity:1; }
-  .cta-pill{
-    display:inline-flex; align-items:center;
-    padding:clamp(7px,1vh,9px) clamp(12px,1.6vw,16px);
-    border-radius:999px; background:var(--ink); color:var(--cream);
-    font-size:clamp(10px,1.1vw,12px); font-weight:600;
-    text-decoration:none; white-space:nowrap;
-  }
 
   main.stage{
     min-height:0; overflow:hidden;
@@ -313,8 +306,6 @@
 
   @media (max-width:640px){
     header.nav{ padding-inline:14px; }
-    nav.links .hide-sm{ display:none; }
-    .cta-pill{ padding:7px 11px; font-size:10px; }
     :root{
       --book-w: clamp(68px, 21vw, 82px);
       --book-h: clamp(100px, 30vw, 120px);
@@ -340,11 +331,8 @@
     <a href="/" class="logo">Ai<span>Pixxel</span></a>
     <nav class="links">
       <a href="/" class="active">Acasă</a>
-      <a href="/strategie-marketing" class="hide-sm">Servicii</a>
-      <a href="/despre" class="hide-sm">Despre</a>
-      <a href="/contact">Contact</a>
+      <a href="/despre">Despre</a>
     </nav>
-    <a href="/contact" class="cta-pill">Contact</a>
   </header>
 
   <main class="stage">
