@@ -3,414 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>De ce noi — AiPixxel Studio | Studio Digital Premium București</title>
-<meta name="description" content="AiPixxel Studio transformă afaceri din România cu AI. Aplicații mobile, site-uri, conținut video AI, automatizări și agenți AI. Venituri mai mari, costuri mai mici.">
-<meta name="keywords" content="studio digital AI București, aplicații mobile România, automatizări AI afaceri, conținut video AI, agenți AI România, dezvoltare aplicații mobile, site-uri web premium">
+<title>Despre AiPixxel — Consultanță de marketing construită de specialiști, nu de corporații</title>
+<meta name="description" content="AiPixxel s-a născut din revolta unor specialiști cu peste două decenii de experiență în corporații mari, sătui de deciziile proaste impuse de sus. Aflați povestea, echipa și principiile din spatele AiPixxel.">
+<link rel="canonical" href="https://aipixxel.online/despre">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F2EFE8;
-    --ink: #1a1a1a;
-    --muted: #9b9690;
-    --line: #D5D1C9;
-    --orange: #FF4D00;
-    --green: #00FF87;
+  :root{
+    --ink:#0A0A0B; --ink-2:#1C1C1F; --gold:#C9A461; --gold-dark:#a9854e;
+    --cream:#F5F2EB; --violet:#8B5CF6;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Space Grotesk', sans-serif;
-    overflow-x: hidden;
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--ink);
+    color: var(--cream);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:1100px; margin:0 auto; padding: 0 clamp(20px,5vw,64px); }
+
+  header.nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 24px clamp(20px,5vw,64px);
+    position:sticky; top:0; z-index:20;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .logo{
+    font-family:'Fraunces',serif; font-size:19px; font-weight:700;
+    letter-spacing:.3px; text-decoration:none; color:var(--cream);
+  }
+  .logo span{ color:var(--gold); }
+  nav.links{
+    display:flex; align-items:center; gap:clamp(18px,3vw,40px);
+  }
+  nav.links > a{
+    text-decoration:none; font-size:14px; font-weight:600;
+    opacity:.75; letter-spacing:.2px; line-height:1;
+    display:inline-flex; align-items:center;
+    transition:opacity .2s,color .2s;
+  }
+  nav.links > a:hover, nav.links > a.active{ opacity:1; color:var(--gold); }
+
+  .nav-drop{ position:relative; display:inline-flex; align-items:center; }
+  .nav-drop>button{
+    background:none; border:none; cursor:pointer; font:inherit;
+    font-size:14px; font-weight:600; color:var(--cream);
+    opacity:.75; padding:0; line-height:1;
+    display:inline-flex; align-items:center;
+    transition:opacity .2s, color .2s;
+  }
+  .nav-drop>button:hover, .nav-drop.open>button{ opacity:1; color:var(--gold); }
+  .nav-drop>button::after{
+    content:""; display:inline-block; width:0; height:0; margin-left:5px;
+    border-left:4px solid transparent; border-right:4px solid transparent;
+    border-top:5px solid currentColor; vertical-align:middle; opacity:.6;
+  }
+  .drop-menu{
+    position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%);
+    min-width:240px; background:var(--ink-2); border:1px solid rgba(255,255,255,.08);
+    border-radius:10px; padding:8px;
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s, visibility .2s; z-index:100;
+  }
+  .nav-drop:hover .drop-menu, .nav-drop.open .drop-menu{
+    opacity:1; visibility:visible; pointer-events:auto;
+  }
+  .drop-menu a{
+    display:block; padding:10px 12px; border-radius:7px;
+    text-decoration:none; font-size:13px; font-weight:500;
+    color:var(--cream); opacity:1; line-height:1.35;
+    transition:background .15s, color .15s;
+  }
+  .drop-menu a:hover{
+    background:rgba(201,164,97,.16); color:var(--gold);
+  }
+  .drop-menu a small{
+    display:block; font-size:10px; font-weight:600; letter-spacing:.8px;
+    text-transform:uppercase; color:var(--gold); margin-bottom:2px; opacity:.85;
   }
 
-  /* HEADER */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 4vw;
-    background: var(--bg);
-    border-bottom: 2px solid var(--orange);
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  .hero{
+    padding: clamp(70px,12vh,140px) 0 clamp(50px,8vh,90px) 0;
+    position:relative; overflow:hidden;
   }
-  .head-left { display: flex; gap: 10px; align-items: center; }
-  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; flex-shrink: 0; box-shadow: 0 0 8px var(--green); }
-  @keyframes blink { 50% { opacity: 0.3; } }
-  .logo-center {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 15px; letter-spacing: 0.1em; text-align: center; line-height: 1.1;
-    color: var(--orange); text-decoration: none;
+  .hero::before{
+    content:"";
+    position:absolute; top:-20%; right:-10%;
+    width:60vw; height:60vw; max-width:700px; max-height:700px;
+    background: radial-gradient(circle, rgba(139,92,246,0.16) 0%, rgba(139,92,246,0) 70%);
+    pointer-events:none;
   }
-  .logo-center span { display: block; font-size: 7px; letter-spacing: 0.4em; font-weight: 700; opacity: 0.7; margin-top: 3px; color: var(--ink); }
-  .head-right { display: flex; gap: 24px; }
-  .head-right a { color: var(--ink); text-decoration: none; opacity: 0.6; transition: color 0.2s, opacity 0.2s; font-size: 11px; letter-spacing: 0.1em; }
-  .head-right a:hover { color: var(--orange); opacity: 1; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center; padding: 60px 5vw;
-    position: relative; overflow: hidden;
+  .eyebrow{
+    font-size:12px; font-weight:800; letter-spacing:3px; text-transform:uppercase;
+    color: var(--violet); margin-bottom:18px; display:block;
   }
-  .hero-tag {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 24px;
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size: clamp(34px, 5.2vw, 66px);
+    line-height:1.06;
+    letter-spacing:-0.5px;
+    max-width: 15ch;
+    position:relative; z-index:1;
   }
-  .hero-title {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: clamp(2.8rem, 8vw, 7rem);
-    line-height: 0.95; letter-spacing: -0.03em;
-    text-transform: uppercase; margin-bottom: 32px;
-  }
-  .hero-title .o { color: var(--orange); }
-  .hero-title .g { color: var(--green); }
-
-  /* AI ARROWS ANIMATION */
-  .ai-arrows {
-    display: flex; gap: 40px; align-items: center;
-    justify-content: center; margin: 40px 0;
-  }
-  .arrow-block { text-align: center; }
-  .arrow-icon {
-    font-size: 3rem; line-height: 1;
-    animation: arrowUp 1.5s ease-in-out infinite;
-  }
-  .arrow-icon.down { animation: arrowDown 1.5s ease-in-out infinite; color: #ff4444; }
-  .arrow-icon.up { color: var(--green); }
-  @keyframes arrowUp {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50% { transform: translateY(-12px); opacity: 1; }
-  }
-  @keyframes arrowDown {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50% { transform: translateY(12px); opacity: 1; }
-  }
-  .arrow-label {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-    margin-top: 10px;
-  }
-  .arrow-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-  .ai-divider {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 2rem; color: var(--orange);
-    display: flex; align-items: center;
+  h1 em{ font-style:italic; color:var(--gold); font-weight:600; }
+  .hero-sub{
+    margin-top:26px;
+    font-size: clamp(16px,1.6vw,19px);
+    color: rgba(245,242,235,0.75);
+    max-width:56ch;
+    position:relative; z-index:1;
   }
 
-  .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: var(--muted); max-width: 52ch;
-    line-height: 1.6; margin-bottom: 40px;
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--orange); color: var(--bg);
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 16px 32px; border-radius: 4px; text-decoration: none;
-    transition: transform 0.2s, background 0.2s;
-  }
-  .hero-cta:hover { transform: translateY(-3px); background: #e63d00; }
-
-  /* TIMELINE */
-  .timeline {
-    max-width: 900px; margin: 0 auto;
-    padding: 80px 5vw 120px;
-    position: relative;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute; left: 50%; top: 0; bottom: 0;
-    width: 1px; background: var(--line);
-    transform: translateX(-50%);
+  section{ padding: clamp(50px,8vh,100px) 0; border-top:1px solid rgba(255,255,255,0.06); }
+  .kicker{ font-size:12px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  h2{
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size: clamp(26px,3.4vw,42px); line-height:1.14; letter-spacing:-.3px;
+    max-width: 22ch;
   }
 
-  .tl-item {
-    display: grid;
-    grid-template-columns: 1fr 60px 1fr;
-    gap: 0; margin-bottom: 80px;
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .story-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(30px,5vw,70px);
+    margin-top: 40px; align-items:start;
   }
-  .tl-item.visible { opacity: 1; transform: translateY(0); }
-  .tl-item:nth-child(even) .tl-content { grid-column: 3; }
-  .tl-item:nth-child(even) .tl-empty { grid-column: 1; }
-  .tl-item:nth-child(odd) .tl-content { grid-column: 1; }
-  .tl-item:nth-child(odd) .tl-empty { grid-column: 3; }
+  .story-grid p{ font-size:16.5px; color:rgba(245,242,235,0.82); margin-bottom:18px; }
+  .story-grid p strong{ color:var(--cream); }
+  .pull-card{
+    background: linear-gradient(160deg, var(--ink-2), #131215);
+    border: 1px solid rgba(201,164,97,0.25);
+    border-radius:14px;
+    padding: 30px 28px;
+    position:sticky; top:110px;
+  }
+  .pull-card .num{
+    font-family:'Fraunces',serif; font-size:54px; font-weight:600; color:var(--gold); line-height:1;
+  }
+  .pull-card .label{ font-size:13px; letter-spacing:1px; text-transform:uppercase; color:rgba(245,242,235,0.6); margin-top:8px; font-weight:700; }
+  .pull-card .desc{ margin-top:16px; font-size:14.5px; color:rgba(245,242,235,0.75); }
+  .pull-divider{ height:1px; background:rgba(255,255,255,0.08); margin:22px 0; }
 
-  .tl-dot-col {
-    grid-column: 2;
-    display: flex; flex-direction: column; align-items: center;
-    padding-top: 8px;
+  .manifesto{ background: var(--ink-2); }
+  .values-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top:44px;
   }
-  .tl-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--orange); border: 3px solid var(--bg);
-    box-shadow: 0 0 0 1px var(--orange);
-    flex-shrink: 0;
+  .value-card{
+    background: rgba(10,10,11,0.5);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:12px; padding:28px 24px;
+    transition: border-color .25s, transform .25s;
   }
+  .value-card:hover{ border-color: rgba(201,164,97,0.5); transform: translateY(-4px); }
+  .value-card .vnum{ font-family:'Fraunces',serif; font-size:15px; color:var(--violet); font-weight:600; margin-bottom:14px; }
+  .value-card h3{ font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin-bottom:10px; color:var(--gold); }
+  .value-card p{ font-size:14.5px; color:rgba(245,242,235,0.72); }
 
-  .tl-content {
-    padding: 0 30px;
+  .team-intro{ max-width:70ch; margin-top:18px; font-size:16.5px; color:rgba(245,242,235,0.82); }
+  .team-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; margin-top:44px;
   }
-  .tl-item:nth-child(even) .tl-content { padding-left: 30px; padding-right: 0; }
-  .tl-item:nth-child(odd) .tl-content { padding-right: 30px; padding-left: 0; text-align: right; }
+  .team-card{
+    border:1px solid rgba(255,255,255,0.08); border-radius:14px;
+    padding: 26px 22px 22px 22px;
+    background: radial-gradient(140% 100% at 0% 0%, rgba(201,164,97,0.06), transparent 60%);
+  }
+  .team-glyph{
+    width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(160deg, var(--gold), #8a6a3a);
+    color: var(--ink); font-family:'Fraunces',serif; font-weight:700; font-size:16px;
+    margin-bottom:18px;
+  }
+  .team-card h3{ font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--cream); }
+  .team-card p{ font-size:14px; color:rgba(245,242,235,0.68); }
 
-  .tl-num {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 11px; letter-spacing: 0.2em; color: var(--orange);
-    text-transform: uppercase; margin-bottom: 10px;
+  .cta{ text-align:center; padding: clamp(70px,10vh,120px) 0; }
+  .cta h2{ margin:0 auto; }
+  .cta p{ margin-top:16px; color:rgba(245,242,235,0.7); font-size:16px; }
+  .cta-btn{
+    display:inline-block; margin-top:30px;
+    background: var(--gold); color: var(--ink);
+    font-weight:800; font-size:15px; letter-spacing:.3px;
+    padding:16px 34px; border-radius:999px; text-decoration:none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 10px 30px rgba(201,164,97,0.25);
   }
-  .tl-category {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    text-transform: uppercase; letter-spacing: -0.01em;
-    line-height: 1.1; margin-bottom: 14px;
-  }
-  .tl-tagline {
-    font-size: 14px; color: var(--ink); font-weight: 600;
-    margin-bottom: 10px; line-height: 1.4;
-  }
-  .tl-desc {
-    font-size: 13px; color: var(--muted); line-height: 1.6;
-  }
-  .tl-tag {
-    display: inline-block; margin-top: 14px;
-    background: var(--green); color: var(--ink);
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
-  }
+  .cta-btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px rgba(201,164,97,0.35); }
 
-  /* BOTTOM CTA */
-  .bottom-cta {
-    text-align: center; padding: 80px 5vw 100px;
-    border-top: 1px solid var(--line);
+  footer{
+    padding: 30px clamp(20px,5vw,64px); text-align:center;
+    border-top:1px solid rgba(255,255,255,0.06);
+    font-size:12.5px; color: rgba(245,242,235,0.4);
   }
-  .bottom-cta h2 {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: clamp(2rem, 6vw, 5rem);
-    text-transform: uppercase; letter-spacing: -0.02em;
-    line-height: 1; margin-bottom: 24px;
+  footer a{ text-decoration:none; opacity:.8; }
+  footer a:hover{ opacity:1; color:var(--gold); }
+
+  @media (max-width: 820px){
+    .story-grid{ grid-template-columns:1fr; }
+    .pull-card{ position:static; }
+    .values-grid, .team-grid{ grid-template-columns:1fr 1fr; }
+    .drop-menu{ left:auto; right:0; transform:none; min-width:min(280px,calc(100vw - 32px)); }
   }
-  .bottom-cta h2 span { color: var(--orange); }
-  .bottom-cta p { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
-
-  /* FOOTER */
-  footer {
-    padding: 14px 4vw;
-    display: flex; justify-content: space-between;
-    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
-    border-top: 1px solid var(--orange);
-    font-family: 'Space Grotesk', sans-serif;
-  }
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--orange); }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    header { flex-direction: column; align-items: center; padding: 12px 4vw 0; border-bottom: none; gap: 0; }
-    .head-left { width: 100%; justify-content: center; font-size: 9px; order: 3; padding: 8px 0; border-top: 1px solid var(--orange); margin-top: 8px; }
-    .logo-center { font-size: 22px; order: 1; }
-    .logo-center span { font-size: 9px; }
-    .head-right { order: 2; gap: 24px; justify-content: center; padding: 8px 0 0; width: 100%; }
-    .head-right a { opacity: 1; font-size: 10px; }
-    .head-right a:not(:last-child) { display: flex; }
-
-    .timeline::before { left: 24px; }
-    .tl-item {
-      grid-template-columns: 48px 1fr !important;
-      margin-bottom: 48px;
-    }
-    .tl-dot-col { grid-column: 1 !important; grid-row: 1; }
-    .tl-content {
-      grid-column: 2 !important;
-      padding: 0 0 0 16px !important;
-      text-align: left !important;
-    }
-    .tl-empty { display: none !important; }
-
-    .ai-arrows { gap: 20px; }
-    .arrow-icon { font-size: 2.2rem; }
-    footer { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  @media (max-width: 560px){
+    .values-grid, .team-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="head-left">
-    <span class="live-dot"></span>
-    <span id="clock">BUCUREȘTI, RO // —</span>
-  </div>
-  <a href="/" class="logo-center">AIPIXXEL<span>STUDIO</span></a>
-  <div class="head-right">
-    <a href="/despre">De ce noi</a>
-    <a href="/contact">Lucrează cu noi</a>
-  </div>
+<header class="nav">
+  <a href="/" class="logo">Ai<span>Pixxel</span></a>
+  <nav class="links">
+    <a href="/">Acasă</a>
+    <div class="nav-drop" id="navDrop">
+      <button type="button">Servicii</button>
+      <div class="drop-menu">
+        <a href="/servicii/analiza-de-business"><small>01</small>Analiză de business</a>
+        <a href="/servicii/strategie-de-dezvoltare"><small>02</small>Strategie de dezvoltare</a>
+        <a href="/servicii/website-uri-sisteme"><small>03</small>Website-uri &amp; sisteme</a>
+        <a href="/servicii/automatizari-tools"><small>04</small>Automatizări &amp; tools</a>
+        <a href="/servicii/campanii-ads"><small>05</small>Campanii Ads</a>
+        <a href="/servicii/social-media-ai"><small>06</small>Social media AI</a>
+        <a href="/servicii/email-marketing-ai"><small>07</small>Email marketing AI</a>
+      </div>
+    </div>
+    <a href="/despre" class="active">Despre</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-tag">// De ce AiPixxel Studio</div>
-  <h1 class="hero-title">
-    AI-ul nu e<br>
-    <span class="o">viitor.</span><br>
-    E <span class="g">acum.</span>
-  </h1>
-
-  <div class="ai-arrows">
-    <div class="arrow-block">
-      <div class="arrow-icon up">↑↑</div>
-      <div class="arrow-label" style="color:var(--green)">Venituri</div>
-      <div class="arrow-sub">cresc</div>
-    </div>
-    <div class="ai-divider">×</div>
-    <div class="arrow-block">
-      <div class="arrow-icon down">↓↓</div>
-      <div class="arrow-label" style="color:#ff4444">Cheltuieli</div>
-      <div class="arrow-sub">scad</div>
-    </div>
+  <div class="wrap">
+    <span class="eyebrow">Despre AiPixxel</span>
+    <h1>Ne-am săturat să facem <em>treabă bună</em> pentru ideile proaste ale altora.</h1>
+    <p class="hero-sub">AiPixxel nu e o agenție care a crescut organic dintr-un birou mic. E o răzvrătire — specialiști care au văzut pe dinăuntru cum arată marketingul făcut prost, la scară mare, și au decis să demonstreze că se poate altfel: mai serios, mai eficient, mai spectaculos.</p>
   </div>
-
-  <p class="hero-sub">Companiile care adoptă AI acum vor domina piața în 2 ani. Cele care nu o fac — vor lupta pentru ce rămâne. Noi te ajutăm să fii primul.</p>
 </section>
 
-<section class="timeline">
+<section id="poveste">
+  <div class="wrap">
+    <div class="kicker">Povestea</div>
+    <h2>21 de ani de văzut pe dinăuntru ce nu funcționează.</h2>
 
-  <div class="tl-item">
-    <div class="tl-content">
-      <div class="tl-num">01</div>
-      <div class="tl-category">Video AI</div>
-      <div class="tl-tagline">Clipuri care vând. Fără echipă. Fără studio. Fără așteptare.</div>
-      <div class="tl-desc">Producem conținut video pentru TikTok, Instagram și ads în ore, nu săptămâni. Calitate cinematică, buget de startup.</div>
-      <span class="tl-tag">De 10× mai rapid</span>
-    </div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-empty"></div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-empty"></div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-content">
-      <div class="tl-num">02</div>
-      <div class="tl-category">Imagini AI</div>
-      <div class="tl-tagline">Fotografie de produs fără fotograf. Campanii vizuale fără agenție.</div>
-      <div class="tl-desc">Generăm imagini premium pentru orice produs sau serviciu — automotive, bijuterii, medical, real estate. Imposibil de distins de real.</div>
-      <span class="tl-tag">Fără sesiune foto</span>
+    <div class="story-grid">
+      <div>
+        <p>AiPixxel, ca brand, există de azi. Dar experiența din spatele lui nu. Fondatorul AiPixxel a lucrat <strong>21 de ani ca angajat</strong> în marketing și dezvoltare de business, în interiorul unor companii unde deciziile importante se luau de sus, adesea fără legătură cu ce chiar funcționa pe teren.</p>
+        <p>Ani de zile a văzut cum campanii bune erau sabotate de decizii proaste, cum bugete mari se duceau pe strategii fără fundament în date, și cum "așa facem noi de obicei" bătea constant "hai să vedem ce zic cifrele".</p>
+        <p>La un moment dat, întrebarea a devenit inevitabilă: <strong>dacă am face-o noi, de la zero, fără compromisurile astea — cât de bine ar putea ieși?</strong></p>
+        <p>AiPixxel e răspunsul la întrebarea asta. Nu o continuare a unei cariere corporate, ci un pariu — că un grup de specialiști care au văzut exact ce nu trebuie făcut poate construi ceva vizibil mai bun, condus pe date, nu pe ego-uri sau ierarhii.</p>
+      </div>
+      <div class="pull-card">
+        <div class="num">21</div>
+        <div class="label">ani de experiență directă în corporate marketing</div>
+        <div class="pull-divider"></div>
+        <div class="desc">Nu experiență de agenție — experiență din interiorul companiilor mari, unde s-a văzut exact ce funcționează și ce se sparge la scară.</div>
+      </div>
     </div>
   </div>
-
-  <div class="tl-item">
-    <div class="tl-content">
-      <div class="tl-num">03</div>
-      <div class="tl-category">Site-uri &<br>Platforme</div>
-      <div class="tl-tagline">Site-ul tău actual pierde clienți în primele 3 secunde. Al nostru nu.</div>
-      <div class="tl-desc">Construim site-uri și platforme care convertesc — design distinctiv, viteză de încărcare extremă, optimizate pentru Google.</div>
-      <span class="tl-tag">SEO + Conversii</span>
-    </div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-empty"></div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-empty"></div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-content">
-      <div class="tl-num">04</div>
-      <div class="tl-category">Aplicații Mobile</div>
-      <div class="tl-tagline">Ai o idee. Noi o transformăm în app pe telefoanele clienților tăi.</div>
-      <div class="tl-desc">De la concept la App Store și Google Play în 30 de zile. React Native, Supabase, plăți integrate. Nu știi de unde să începi? Începem noi pentru tine.</div>
-      <span class="tl-tag">iOS + Android</span>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-content">
-      <div class="tl-num">05</div>
-      <div class="tl-category">Automatizări</div>
-      <div class="tl-tagline">Angajatul tău cel mai bun nu doarme, nu cere mărire, nu greșește.</div>
-      <div class="tl-desc">Automatizăm procese repetitive — emailuri, rapoarte, facturi, CRM, sincronizări. Tu te ocupi de ce contează. AI-ul face restul.</div>
-      <span class="tl-tag">-80% timp pierdut</span>
-    </div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-empty"></div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-empty"></div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-content">
-      <div class="tl-num">06</div>
-      <div class="tl-category">Dashboard-uri</div>
-      <div class="tl-tagline">Date în timp real. Decizii în timp real. Avantaj în timp real.</div>
-      <div class="tl-desc">Construim dashboard-uri personalizate care îți arată exact ce se întâmplă în business-ul tău — vânzări, stocuri, campanii, KPI-uri — toate într-un singur loc.</div>
-      <span class="tl-tag">Decizii mai bune</span>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-content">
-      <div class="tl-num">07</div>
-      <div class="tl-category">Agenți AI</div>
-      <div class="tl-tagline">Imaginează-ți un angajat care lucrează 24/7, în orice limbă, fără erori.</div>
-      <div class="tl-desc">Implementăm agenți AI care răspund clienților, califică lead-uri, procesează comenzi și rezolvă probleme — complet autonom, pe site-ul sau WhatsApp-ul tău.</div>
-      <span class="tl-tag">24/7 fără pauze</span>
-    </div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-empty"></div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-empty"></div>
-    <div class="tl-dot-col"><div class="tl-dot"></div></div>
-    <div class="tl-content">
-      <div class="tl-num">08</div>
-      <div class="tl-category">Strategie Marketing</div>
-      <div class="tl-tagline">Știm unde sunt clienții tăi. Știm ce îi face să cumpere.</div>
-      <div class="tl-desc">Strategie. Implementare. Rezultate. Nu vindem promisiuni — vindem campanii care se măsoară în vânzări reale, nu în like-uri.</div>
-      <span class="tl-tag">ROI măsurabil</span>
-    </div>
-  </div>
-
 </section>
 
-<section class="bottom-cta">
-  <h2>Următorul pas<br>e <span>al tău.</span></h2>
-  <p>Primul apel e gratis. Estimarea — rapidă. Decizia — a ta.</p>
-  <a href="/contact" class="hero-cta">Lucrează cu noi →</a>
+<section class="manifesto">
+  <div class="wrap">
+    <div class="kicker">Cum lucrăm</div>
+    <h2>Trei principii pe care nu le negociem.</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="vnum">01</div>
+        <h3>Serios</h3>
+        <p>Fără vrăjeli, fără promisiuni pe care nu le putem susține cu date. Fiecare recomandare vine dintr-un calcul, nu dintr-o presupunere.</p>
+      </div>
+      <div class="value-card">
+        <div class="vnum">02</div>
+        <h3>Eficient</h3>
+        <p>Timpul și bugetul clientului nu se irosesc pe procese care nu aduc rezultat măsurabil. Ce nu funcționează, se schimbă rapid — nu se justifică.</p>
+      </div>
+      <div class="value-card">
+        <div class="vnum">03</div>
+        <h3>Spectaculos</h3>
+        <p>Rezultatele bune nu trebuie să fie plictisitoare. Construim campanii, sisteme și strategii care ies din tipar, nu variante sigure și uitabile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="echipa">
+  <div class="wrap">
+    <div class="kicker">Echipa</div>
+    <h2>O rețea de specialiști, nu un singur om cu titlu mare.</h2>
+    <p class="team-intro">AiPixxel colaborează cu aproximativ 10 specialiști — nu un birou clasic, ci o rețea de oameni aleși pentru expertiza reală pe zona lor, coordonată direct de fondator pe fiecare proiect. Trei arii principale:</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-glyph">C</div>
+        <h3>Creație</h3>
+        <p>Design, conținut vizual și motion — specialiști care construiesc identitatea vizuală și materialele campaniilor, calibrate pe brandul fiecărui client.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-glyph">A</div>
+        <h3>Analiză &amp; strategie</h3>
+        <p>Oamenii care transformă datele brute (vânzări, trafic, comportament de cumpărare) în decizii concrete — CAC, LTV, segmentare, plan de creștere.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-glyph">L</div>
+        <h3>Limbaj &amp; comportament</h3>
+        <p>Specialiști în comunicare și comportament de consum — mesajele care chiar convertesc, nu doar cele care "sună bine" într-o ședință.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Vrei să vezi cum arată marketingul făcut corect?</h2>
+    <p>Primul apel de consultanță e gratuit — și fără presiunea unui contract semnat pe loc.</p>
+    <a href="/contact" class="cta-btn">Programează un apel</a>
+  </div>
 </section>
 
 <footer>
-  <span>©2026 AiPixxel Studio</span>
-  <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
-  <a href="https://instagram.com/aipixxel">Instagram</a>
+  <div>© 2026 AiPixxel · București · <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a></div>
 </footer>
 
-<script>
-  // Clock
-  function updateClock() {
-    var now = new Date();
-    var time = now.toLocaleTimeString('ro-RO', { hour:'2-digit', minute:'2-digit' });
-    document.getElementById('clock').textContent = 'BUCUREȘTI, RO // ' + time;
-  }
-  updateClock();
-  setInterval(updateClock, 30000);
-
-  // Scroll animations
-  var items = document.querySelectorAll('.tl-item');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-  items.forEach(function(item) { observer.observe(item); });
-</script>
+<script src="/assets/nav.js"></script>
 </body>
 </html>
