@@ -190,7 +190,7 @@
 
   .ecosystem-stage {
     position: relative;
-    width: min(920px, 100%);
+    width: min(1000px, 100%);
     margin: 0 auto;
     aspect-ratio: 1;
   }
@@ -238,9 +238,10 @@
 
   .pillar-node {
     position: absolute;
-    width: 200px;
+    width: 190px;
     transform: translate(-50%, -50%);
     z-index: 2;
+    pointer-events: auto;
   }
   .pillar-node-inner {
     background: var(--anthracite);
@@ -495,13 +496,13 @@
       <li class="has-dropdown" id="servicesDropdown">
         <button type="button" aria-expanded="false">Servicii</button>
         <div class="dropdown">
-          <a href="#ecosystem" data-pillar="0">Analiză de business</a>
-          <a href="#ecosystem" data-pillar="1">Strategie de dezvoltare</a>
-          <a href="#ecosystem" data-pillar="2">Website-uri &amp; sisteme</a>
-          <a href="#ecosystem" data-pillar="3">Automatizări &amp; tools</a>
-          <a href="#ecosystem" data-pillar="4">Campanii Ads</a>
-          <a href="#ecosystem" data-pillar="5">Social media AI</a>
-          <a href="#ecosystem" data-pillar="6">Email marketing AI</a>
+          <a href="/#ecosystem" data-pillar="0">Analiză de business</a>
+          <a href="/strategie-marketing">Strategie de dezvoltare</a>
+          <a href="/site-uri">Website-uri &amp; sisteme</a>
+          <a href="/automatizari">Automatizări &amp; tools</a>
+          <a href="/strategie-marketing">Campanii Ads</a>
+          <a href="https://posty.app" target="_blank" rel="noopener">Social media AI · Posty ↗</a>
+          <a href="/#ecosystem" data-pillar="6">Email marketing AI</a>
           <p class="note">Posty — recomandare partener, nu serviciu AiPixxel</p>
         </div>
       </li>
@@ -534,7 +535,7 @@
     <p class="section-sub">Nu vindem servicii izolate — conectăm analiza, strategia și execuția într-un flux continuu de date și decizii.</p>
 
     <div class="ecosystem-stage" id="ecosystemStage">
-      <svg class="cables-svg" id="cablesSvg" viewBox="0 0 920 920" preserveAspectRatio="xMidYMid meet">
+      <svg class="cables-svg" id="cablesSvg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#C9A461" stop-opacity="0.3"/>
@@ -667,16 +668,16 @@
   ];
 
   var SHAPE_FILES = [
-    'assets/morph/01-factory.png',
-    'assets/morph/03-car.png',
-    'assets/morph/04-dining.png',
-    'assets/morph/06-store.png',
-    'assets/morph/07-house.png',
-    'assets/morph/08-code.png',
-    'assets/morph/09-finance.png',
-    'assets/morph/05-coffee.png',
-    'assets/morph/02-tools.png',
-    'assets/morph/10-fitness.png'
+    'icons/01-factory.png',
+    'icons/03-car.png',
+    'icons/04-dining.png',
+    'icons/06-store.png',
+    'icons/07-house.png',
+    'icons/08-code.png',
+    'icons/09-finance.png',
+    'icons/05-coffee.png',
+    'icons/02-tools.png',
+    'icons/10-fitness.png'
   ];
 
   var PARTICLE_COUNT = 850;
@@ -704,16 +705,27 @@
   document.querySelectorAll('.dropdown a[data-pillar]').forEach(function(a) {
     a.addEventListener('click', function(e) {
       var idx = parseInt(a.getAttribute('data-pillar'), 10);
-      expandPillar(idx);
+      var onHome = location.pathname === '/' || location.pathname.endsWith('/index.html');
+      if (onHome) {
+        e.preventDefault();
+        expandPillar(idx);
+        document.getElementById('ecosystem').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       nav.classList.remove('open');
+      servicesDropdown.classList.remove('open');
     });
   });
+
+  if (location.hash === '#ecosystem') {
+    var pillarMatch = location.search.match(/pillar=(\d)/);
+    if (pillarMatch) expandPillar(parseInt(pillarMatch[1], 10));
+  }
 
   /* ── BUILD PILLAR NODES (desktop) ── */
   var pillarNodesEl = document.getElementById('pillarNodes');
   var cablesGroup = document.getElementById('cablesGroup');
   var stageEl = document.getElementById('ecosystemStage');
-  var CX = 460, CY = 460, FRAME_R = 170, NODE_R = 380;
+  var CX = 500, CY = 500, FRAME_R = 165, NODE_R = 355;
 
   PILLARS.forEach(function(p, i) {
     var angle = (-Math.PI / 2) + (i * 2 * Math.PI / 7);
@@ -750,8 +762,8 @@
 
     var node = document.createElement('div');
     node.className = 'pillar-node';
-    node.style.left = (nx / 920 * 100) + '%';
-    node.style.top = (ny / 920 * 100) + '%';
+    node.style.left = (nx / 1000 * 100) + '%';
+    node.style.top = (ny / 1000 * 100) + '%';
     node.setAttribute('data-index', i);
     node.innerHTML = '<div class="pillar-node-inner"><div class="pillar-num">' + p.num + '</div><div class="pillar-title">' + p.title + '</div><div class="pillar-desc">' + p.desc + '</div></div>';
     pillarNodesEl.appendChild(node);
