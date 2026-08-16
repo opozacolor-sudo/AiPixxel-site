@@ -1,6 +1,13 @@
 {
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/despre", "destination": "/despre.html" }
+    { "source": "/despre", "destination": "/despre.html" },
+    { "source": "/servicii/analiza-de-business", "destination": "/servicii/analiza-de-business.html" },
+    { "source": "/servicii/strategie-de-dezvoltare", "destination": "/servicii/strategie-de-dezvoltare.html" },
+    { "source": "/servicii/website-uri-sisteme", "destination": "/servicii/website-uri-sisteme.html" },
+    { "source": "/servicii/automatizari-tools", "destination": "/servicii/automatizari-tools.html" },
+    { "source": "/servicii/campanii-ads", "destination": "/servicii/campanii-ads.html" },
+    { "source": "/servicii/social-media-ai", "destination": "/servicii/social-media-ai.html" },
+    { "source": "/servicii/email-marketing-ai", "destination": "/servicii/email-marketing-ai.html" }
   ]
 }
