@@ -194,6 +194,11 @@
     text-wrap:balance;
     display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
   }
+  .cover-title.sm{
+    font-size:clamp(8px,.92vw,12px);
+    line-height:1.04;
+    letter-spacing:-.18px;
+  }
   .cover-rule{
     width:clamp(12px,1.5vw,18px); height:2px;
     margin:clamp(3px,.5vh,6px) 0; opacity:.55;
@@ -444,7 +449,7 @@ var BOOKS = [
   { cls:"b-violet",    title:"Valoare",      sub:"LTV client",      cat:"Valoare",      lessonNum:3 },
   { cls:"b-cream",     title:"Profit",       sub:"Marjă netă",      cat:"Profit",       lessonNum:4 },
   { cls:"b-inkviolet", title:"Scalare",      sub:"Creștere",        cat:"Scalare",      lessonNum:5 },
-  { cls:"b-ink2",      title:"Automatizare", sub:"Eficiență",       cat:"Eficiență",    lessonNum:6 },
+  { cls:"b-ink2",      title:"Automatizare", sub:"Eficiență",       cat:"Eficiență",    lessonNum:6, titleSm:true },
   { cls:"b-goldviolet",title:"Date",         sub:"Decizii",         cat:"Analiză",      lessonNum:7 },
   { cls:"b-inkgold",   title:"Poziționare",  sub:"Diferențiere",    cat:"Strategie",    lessonNum:8 }
 ];
@@ -486,7 +491,7 @@ function buildCover(book, index) {
         MOTIFS[index] +
         '<div class="cover-tag">Lecția ' + num + '</div>' +
         '<div class="cover-body">' +
-          '<div class="cover-title">' + book.title + '</div>' +
+          '<div class="cover-title' + (book.titleSm ? ' sm' : '') + '">' + book.title + '</div>' +
           '<div class="cover-rule"></div>' +
           '<div class="cover-sub">' + book.sub + '</div>' +
         '</div>' +
