@@ -116,13 +116,16 @@
 
   .ecosystem-stage {
     position: relative;
-    width: min(calc(100vh - var(--header-h) - var(--footer-h) - 48px), calc(100vw - 48px), 520px);
-    height: min(calc(100vh - var(--header-h) - var(--footer-h) - 48px), calc(100vw - 48px), 520px);
+    width: min(calc(100vh - var(--header-h) - var(--footer-h) - 32px), calc(100vw - 40px), 820px);
+    height: min(calc(100vh - var(--header-h) - var(--footer-h) - 32px), calc(100vw - 40px), 820px);
   }
 
   .morph-frame {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38%;
+    height: 38%;
     border-radius: 50%;
     border: 1px solid rgba(201,164,97,0.5);
     box-shadow:
@@ -131,8 +134,120 @@
       inset 0 0 48px rgba(201,164,97,0.05);
     overflow: hidden;
     background: radial-gradient(circle, rgba(28,28,31,0.5) 0%, var(--black) 70%);
+    z-index: 3;
   }
   .morph-frame canvas { width: 100%; height: 100%; display: block; }
+
+  .cables-svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .cable-base {
+    fill: none;
+    stroke: url(#cableGrad);
+    stroke-width: 1.2;
+    opacity: 0.4;
+    transition: opacity 0.25s;
+  }
+  .cable-base.active { opacity: 0.92; }
+  .cable-pulse {
+    fill: var(--violet);
+    filter: drop-shadow(0 0 6px var(--violet));
+  }
+
+  .edu-node {
+    position: absolute;
+    width: 64px; height: 64px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: var(--anthracite);
+    border: 1px solid rgba(201,164,97,0.45);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    font-size: 0.58rem; font-weight: 600;
+    letter-spacing: 0.02em; line-height: 1.15;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  }
+  .edu-node:hover,
+  .edu-node:focus-visible {
+    transform: translate(-50%, -50%) scale(1.08);
+    border-color: rgba(139,92,246,0.6);
+    box-shadow: 0 0 28px rgba(139,92,246,0.4);
+    outline: none;
+  }
+
+  .edu-mobile { display: none; }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(10,10,11,0.88);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-panel {
+    position: relative;
+    width: min(640px, 100%);
+    max-height: min(85vh, 720px);
+    overflow-y: auto;
+    background: var(--anthracite);
+    border: 1px solid rgba(201,164,97,0.28);
+    border-radius: 4px;
+    padding: 28px 28px 32px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.55);
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,164,97,0.25);
+    color: rgba(245,242,235,0.6);
+    font-size: 1.1rem; line-height: 1;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .modal-close:hover { border-color: var(--violet); color: var(--warm-white); }
+  .modal-panel h2 {
+    font-family: var(--font-display);
+    font-size: 1.45rem; font-weight: 600;
+    color: var(--gold);
+    padding-right: 36px;
+    margin-bottom: 20px;
+  }
+  .lesson-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--warm-white);
+    margin: 1.4em 0 0.6em;
+  }
+  .lesson-body h3:first-child { margin-top: 0; }
+  .lesson-body p,
+  .lesson-body li {
+    font-size: 0.88rem; font-weight: 400;
+    color: rgba(245,242,235,0.72);
+    line-height: 1.65;
+    margin-bottom: 0.75em;
+  }
+  .lesson-body ul { padding-left: 1.2em; margin-bottom: 0.75em; }
+  .lesson-body pre {
+    background: rgba(10,10,11,0.65);
+    border: 1px solid rgba(201,164,97,0.15);
+    border-radius: 3px;
+    padding: 12px 14px;
+    margin: 12px 0;
+    overflow-x: auto;
+  }
+  .lesson-body code {
+    font-family: 'Outfit', monospace;
+    font-size: 0.82rem;
+    color: var(--gold);
+  }
+  .lesson-body strong { color: rgba(245,242,235,0.92); }
 
   /* ── FOOTER ── */
   footer {
@@ -145,6 +260,81 @@
     color: rgba(245,242,235,0.35);
   }
   footer a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    main {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px 16px 8px;
+      gap: 10px;
+      overflow: hidden;
+    }
+    .ecosystem-stage {
+      width: min(168px, 44vw);
+      height: min(168px, 44vw);
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+    .morph-frame {
+      position: relative;
+      top: auto; left: auto;
+      transform: none;
+      width: 100%; height: 100%;
+    }
+    .cables-svg, .edu-node { display: none; }
+    .edu-mobile {
+      display: block;
+      flex: 1; min-height: 0;
+      position: relative;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-left: 28px;
+    }
+    .edu-mobile-line {
+      position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--violet), rgba(139,92,246,0.08));
+      box-shadow: 0 0 10px var(--violet-dim);
+    }
+    .edu-mobile-line::after {
+      content: '';
+      position: absolute; left: -2px; width: 5px; height: 5px;
+      background: var(--violet); border-radius: 50%;
+      box-shadow: 0 0 8px var(--violet);
+      animation: flowDown 3s linear infinite;
+    }
+    @keyframes flowDown {
+      0% { top: 0; opacity: 1; }
+      100% { top: calc(100% - 5px); opacity: 0.2; }
+    }
+    .edu-mobile-card {
+      position: relative;
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+    .edu-mobile-card::before {
+      content: '';
+      position: absolute; left: -16px; top: 50%;
+      width: 8px; height: 8px;
+      transform: translateY(-50%);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: var(--black);
+    }
+    .edu-mobile-card button {
+      width: 100%; text-align: left;
+      background: var(--anthracite);
+      border: 1px solid rgba(201,164,97,0.18);
+      border-radius: 3px;
+      padding: 12px 14px;
+      font-size: 0.78rem; font-weight: 600;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .edu-mobile-card button:hover {
+      border-color: rgba(139,92,246,0.45);
+      box-shadow: 0 0 16px rgba(139,92,246,0.15);
+    }
+  }
 
   @media (max-width: 768px) {
     .nav-toggle { display: flex; }
@@ -199,20 +389,128 @@
 </header>
 
 <main>
-  <div class="ecosystem-stage">
+  <div class="ecosystem-stage" id="ecosystemStage">
+    <svg class="cables-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#C9A461"/>
+          <stop offset="100%" stop-color="#8B5CF6"/>
+        </linearGradient>
+      </defs>
+      <g id="cablesGroup"></g>
+    </svg>
     <div class="morph-frame" id="morphFrame">
       <canvas id="morphCanvas"></canvas>
     </div>
+    <div id="eduNodes"></div>
+  </div>
+  <div class="edu-mobile" id="eduMobile">
+    <div class="edu-mobile-line" aria-hidden="true"></div>
   </div>
 </main>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Închide">×</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
 
 <footer>
   <span>© 2026 AiPixxel · București</span>
   <a href="mailto:contact@aipixxel.online">contact@aipixxel.online</a>
 </footer>
 
+<script src="nodes-content.js"></script>
 <script>
 (function() {
+  var CX = 500, CY = 500, FRAME_R = 190, NODE_R = 430;
+
+  /* ── Modal ── */
+  var modal = document.getElementById('modalBackdrop');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalBody = document.getElementById('modalBody');
+
+  function openModal(node) {
+    modalTitle.textContent = node.subtitlu;
+    modalBody.innerHTML = node.continutPopup;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ── Edu nodes + cables ── */
+  var cablesGroup = document.getElementById('cablesGroup');
+  var eduNodesEl = document.getElementById('eduNodes');
+  var eduMobile = document.getElementById('eduMobile');
+  var cableEls = [];
+
+  EDU_NODES.forEach(function(node, i) {
+    var angle = (-Math.PI / 2) + (i * Math.PI / 4);
+    var nx = CX + Math.cos(angle) * NODE_R;
+    var ny = CY + Math.sin(angle) * NODE_R;
+    var ex = CX + Math.cos(angle) * (FRAME_R + 4);
+    var ey = CY + Math.sin(angle) * (FRAME_R + 4);
+    var cpx = CX + Math.cos(angle) * (FRAME_R + NODE_R) * 0.4;
+    var cpy = CY + Math.sin(angle) * (FRAME_R + NODE_R) * 0.4;
+    var d = 'M' + ex + ',' + ey + ' Q' + cpx + ',' + cpy + ' ' + nx + ',' + ny;
+
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('class', 'cable-base');
+    path.setAttribute('data-cable', i);
+    cablesGroup.appendChild(path);
+    cableEls.push(path);
+
+    var pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    pulse.setAttribute('r', '3');
+    pulse.setAttribute('class', 'cable-pulse');
+    var anim = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+    anim.setAttribute('dur', (2.5 + Math.random() * 1).toFixed(2) + 's');
+    anim.setAttribute('repeatCount', 'indefinite');
+    anim.setAttribute('path', d);
+    pulse.appendChild(anim);
+    cablesGroup.appendChild(pulse);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'edu-node';
+    btn.style.left = (nx / 1000 * 100) + '%';
+    btn.style.top = (ny / 1000 * 100) + '%';
+    btn.textContent = node.titluScurt;
+    btn.setAttribute('aria-label', node.subtitlu);
+    btn.addEventListener('click', function() { openModal(node); });
+    btn.addEventListener('mouseenter', function() { cableEls[i].classList.add('active'); });
+    btn.addEventListener('mouseleave', function() { cableEls[i].classList.remove('active'); });
+    btn.addEventListener('focus', function() { cableEls[i].classList.add('active'); });
+    btn.addEventListener('blur', function() { cableEls[i].classList.remove('active'); });
+    eduNodesEl.appendChild(btn);
+
+    var card = document.createElement('div');
+    card.className = 'edu-mobile-card';
+    var mBtn = document.createElement('button');
+    mBtn.type = 'button';
+    mBtn.textContent = node.titluScurt;
+    mBtn.addEventListener('click', function() { openModal(node); });
+    card.appendChild(mBtn);
+    eduMobile.appendChild(card);
+  });
+
   var SHAPE_FILES = [
     'icons/01-factory.png', 'icons/03-car.png', 'icons/04-dining.png',
     'icons/06-store.png', 'icons/07-house.png', 'icons/08-code.png',
